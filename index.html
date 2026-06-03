@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareerCompass — Discover Your Path</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1f3d;
+  --navy-mid: #1a3260;
+  --indigo: #2952a3;
+  --sky: #4a90d9;
+  --gold: #e8a020;
+  --gold-light: #fdf3e0;
+  --mint: #1cb87e;
+  --mint-light: #e3faf2;
+  --rose: #e05c6b;
+  --rose-light: #fdeaec;
+  --purple: #7c5cbf;
+  --purple-light: #f0ebfc;
+  --surface: #f8f9fc;
+  --white: #ffffff;
+  --text-1: #0f1f3d;
+  --text-2: #445575;
+  --text-3: #8094b4;
+  --border: rgba(15,31,61,0.10);
+  --border-md: rgba(15,31,61,0.18);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --shadow: 0 2px 12px rgba(15,31,61,0.08);
+  --shadow-md: 0 4px 24px rgba(15,31,61,0.12);
+  --transition: 0.2s ease;
+}
+ 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--surface);
+  color: var(--text-1);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+ 
+/* ─── NAV ─── */
+.nav {
+  background: var(--navy);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, var(--sky), var(--mint));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+}
+.nav-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+}
+.nav-title span { color: var(--sky); }
+.nav-steps {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.nav-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 400;
+}
+.nav-step.active {
+  background: rgba(255,255,255,0.12);
+  color: white;
+}
+.nav-step.completed {
+  color: var(--mint);
+}
+.nav-step-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+}
+.nav-step.active .nav-step-num { background: var(--sky); color: white; }
+.nav-step.completed .nav-step-num { background: var(--mint); color: white; }
+ 
+/* ─── HERO ─── */
+.hero {
+  background: var(--navy);
+  padding: 4rem 2rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(74,144,217,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(28,184,126,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(74,144,217,0.15);
+  border: 1px solid rgba(74,144,217,0.3);
+  color: var(--sky);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: white;
+  line-height: 1.18;
+  max-width: 680px;
+  margin: 0 auto 1.25rem;
+}
+.hero h1 em { color: var(--sky); font-style: normal; }
+.hero p {
+  color: rgba(255,255,255,0.6);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+}
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--sky);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-start:hover { background: #3a7fc9; transform: translateY(-1px); }
+.btn-start svg { transition: transform var(--transition); }
+.btn-start:hover svg { transform: translateX(3px); }
+ 
+/* ─── PAGE CONTAINER ─── */
+.page { display: none; }
+.page.active { display: block; }
+ 
+/* ─── ASSESSMENT LAYOUT ─── */
+.assessment-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.section-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--navy);
+}
+.section-header p {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+ 
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
+}
+ 
+.form-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-2);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.form-card h3 .badge {
+  font-size: 10px;
+  background: var(--gold-light);
+  color: var(--gold);
+  padding: 2px 8px;
+  border-radius: 100px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+ 
+/* Personal details */
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) {
+  .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+}
+ 
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field label { font-size: 13px; font-weight: 500; color: var(--text-2); }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-1);
+  background: var(--white);
+  transition: border-color var(--transition);
+  outline: none;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(74,144,217,0.12); }
+.form-field textarea { resize: vertical; min-height: 80px; }
+ 
+/* Chip select */
+.chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--border-md);
+  border-radius: 100px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--white);
+  color: var(--text-2);
+  user-select: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+.chip:hover {
+  border-color: var(--sky);
+  color: var(--sky);
+  background: rgba(74,144,217,0.05);
+}
+.chip.selected {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+  font-weight: 500;
+}
+.chip .chip-check {
+  width: 14px; height: 14px;
+  display: none;
+}
+.chip.selected .chip-check { display: block; }
+ 
+/* Custom add input */
+.add-custom {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.add-custom input {
+  flex: 1;
+  border: 1.5px dashed var(--border-md);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  background: var(--surface);
+  color: var(--text-1);
+  transition: var(--transition);
+}
+.add-custom input:focus { border-color: var(--sky); background: white; }
+.add-custom button {
+  padding: 8px 16px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.add-custom button:hover { background: var(--indigo); }
+ 
+/* Progress bar */
+.progress-bar-wrap {
+  background: rgba(15,31,61,0.08);
+  border-radius: 100px;
+  height: 5px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sky), var(--mint));
+  border-radius: 100px;
+  transition: width 0.4s ease;
+}
+ 
+/* Nav buttons */
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px solid var(--border-md);
+  border-radius: 100px;
+  padding: 11px 22px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-back:hover { border-color: var(--text-2); color: var(--text-1); }
+.btn-next {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-next:hover { background: var(--indigo); transform: translateY(-1px); }
+.btn-analyze {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--sky), var(--mint));
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 32px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-analyze:hover { transform: translateY(-1px); opacity: 0.92; }
+ 
+/* ─── RESULTS PAGE ─── */
+.results-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.results-hero {
+  background: var(--navy);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.5rem 2rem;
+  color: white;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.results-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(74,144,217,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.results-hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.results-hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.results-hero h2 span { color: var(--sky); }
+.results-hero p {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  margin-top: 6px;
+  font-weight: 300;
+}
+.results-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.25rem;
+}
+.result-tag {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+ 
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+ 
+.career-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+.career-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.career-card.rank-1 { border-left: 4px solid var(--gold); }
+.career-card.rank-2 { border-left: 4px solid #b0b8c8; }
+.career-card.rank-3 { border-left: 4px solid #c89060; }
+ 
+.career-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.career-card-left { flex: 1; }
+.career-rank {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.career-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.career-category {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--indigo);
+  background: rgba(41,82,163,0.08);
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+ 
+.match-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.match-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.match-circle svg {
+  position: absolute;
+  top: 0; left: 0;
+  transform: rotate(-90deg);
+}
+.match-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+.match-label {
+  font-size: 10px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+}
+ 
+.career-desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+ 
+.career-reason {
+  background: var(--mint-light);
+  border-left: 3px solid var(--mint);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #0f5440;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+.career-reason strong { font-weight: 500; }
+ 
+.career-details {
+  display: none;
+}
+.career-details.open { display: block; }
+ 
+.career-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 580px) {
+  .career-detail-grid { grid-template-columns: 1fr; }
+}
+ 
+.detail-block h4 {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.skill-pill {
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.edu-list {
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+.edu-list li::before {
+  content: '→ ';
+  color: var(--sky);
+  font-weight: 500;
+}
+ 
+.career-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--sky);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+ 
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-2);
+}
+.no-results h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--navy);
+}
+ 
+/* filters */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.filter-bar span {
+  font-size: 13px;
+  color: var(--text-2);
+  font-weight: 500;
+  margin-right: 4px;
+}
+.filter-btn {
+  padding: 6px 14px;
+  border: 1.5px solid var(--border-md);
+  border-radius: 100px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-2);
+  background: white;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+}
+.filter-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+.filter-btn:hover:not(.active) {
+  border-color: var(--sky);
+  color: var(--sky);
+}
+ 
+/* loading */
+.analyzing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.analyzing-spinner {
+  width: 56px; height: 56px;
+  border: 3px solid var(--border-md);
+  border-top-color: var(--sky);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin-bottom: 1.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.analyzing h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.analyzing p { color: var(--text-2); font-size: 14px; }
+ 
+/* restart */
+.btn-restart {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text-2);
+  border: 1.5px solid var(--border-md);
+  border-radius: 100px;
+  padding: 10px 22px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 1.5rem;
+}
+.btn-restart:hover { border-color: var(--text-2); color: var(--text-1); }
+ 
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .nav-steps { display: none; }
+  .hero-stats { gap: 1.5rem; }
+  .hero { padding: 3rem 1.5rem 4rem; }
+  .career-card-top { flex-direction: column-reverse; }
+  .match-circle { width: 56px; height: 56px; }
+  .match-pct { font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">C</div>
+    <span class="nav-title">Career<span>Compass</span></span>
+  </a>
+  <div class="nav-steps">
+    <div class="nav-step active" id="nav-step-0">
+      <div class="nav-step-num">1</div> Profile
+    </div>
+    <div class="nav-step" id="nav-step-1">
+      <div class="nav-step-num">2</div> Skills
+    </div>
+    <div class="nav-step" id="nav-step-2">
+      <div class="nav-step-num">3</div> Interests
+    </div>
+    <div class="nav-step" id="nav-step-3">
+      <div class="nav-step-num">4</div> Results
+    </div>
+  </div>
+</nav>
+ 
+<!-- PAGE 0: HERO -->
+<div id="page-hero" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">✦ AI-Powered Career Guidance</div>
+    <h1>Discover Your <em>Ideal Career Path</em> With Confidence</h1>
+    <p>Answer a few questions about your skills, interests, and strengths — we'll match you to 117+ careers across 15 domains.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">117+</div><div class="hero-stat-label">Careers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15</div><div class="hero-stat-label">Domains</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">5 min</div><div class="hero-stat-label">Assessment</div></div>
+    </div>
+    <button class="btn-start" onclick="goToStep(1)">
+      Start Assessment
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+ 
+  <!-- category preview -->
+  <div style="max-width:900px;margin:2.5rem auto;padding:0 1.5rem;">
+    <p style="text-align:center;font-size:13px;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.25rem;">Career Domains We Cover</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">💻 Technology & IT</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🏗️ Engineering</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🏛️ Government & Public Service</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🩺 Healthcare & Medicine</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🎨 Creative & Design</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🎤 Media & Entertainment</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">📚 Education & Research</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">💼 Business & Management</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">💰 Finance & Commerce</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">⚖️ Law & Administration</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🌾 Agriculture & Environment</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🇮🇳 Defence & Nation Service</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">✈️ Travel & Hospitality</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🏅 Sports & Fitness</span>
+      <span style="background:white;border:1px solid var(--border);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--text-2);">🌐 Emerging Careers</span>
+    </div>
+  </div>
+</div>
+ 
+<!-- PAGE 1: PERSONAL DETAILS + HARD SKILLS -->
+<div id="page-1" class="page">
+  <div class="assessment-wrapper">
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:20%"></div></div>
+ 
+    <!-- Personal Details -->
+    <div class="section-header">
+      <div class="section-icon" style="background:#e8f0fe;">👤</div>
+      <div>
+        <h2>Personal Details</h2>
+        <p>Tell us a little about yourself</p>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <div class="form-grid-2">
+        <div class="form-field">
+          <label>Full Name</label>
+          <input type="text" id="inp-name" placeholder="Your name" />
+        </div>
+        <div class="form-field">
+          <label>Age</label>
+          <input type="number" id="inp-age" placeholder="e.g. 21" min="14" max="60" />
+        </div>
+        <div class="form-field">
+          <label>Gender</label>
+          <select id="inp-gender">
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Non-binary</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Current Location</label>
+          <input type="text" id="inp-location" placeholder="City, State" />
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Education -->
+    <div class="form-card">
+      <h3>🎓 Education Background</h3>
+      <div class="form-grid-2">
+        <div class="form-field">
+          <label>Highest Qualification</label>
+          <select id="inp-edu">
+            <option value="">Select qualification</option>
+            <option>10th Grade / SSLC</option>
+            <option>12th Grade / Intermediate</option>
+            <option>Diploma / Polytechnic</option>
+            <option>Bachelor's Degree (B.Tech / B.E.)</option>
+            <option>Bachelor's Degree (B.Sc)</option>
+            <option>Bachelor's Degree (B.Com)</option>
+            <option>Bachelor's Degree (BBA)</option>
+            <option>Bachelor's Degree (BCA)</option>
+            <option>Bachelor's Degree (BA)</option>
+            <option>Bachelor's Degree (MBBS/BDS/BPT)</option>
+            <option>Master's Degree (M.Tech / M.E.)</option>
+            <option>Master's Degree (MBA)</option>
+            <option>Master's Degree (M.Sc / MA / MCA)</option>
+            <option>PhD / Doctorate</option>
+            <option>Professional (CA / CS / CMA)</option>
+            <option>Currently Studying</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Field of Study / Specialization</label>
+          <input type="text" id="inp-field" placeholder="e.g. Computer Science, Commerce" />
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Hard Skills -->
+    <div class="section-header" style="margin-top:2rem;">
+      <div class="section-icon" style="background:#e8f6f1;">⚙️</div>
+      <div>
+        <h2>Technical / Hard Skills</h2>
+        <p>Select all technical skills you have</p>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>💻 Programming & Technology</h3>
+      <div class="chips-grid" id="chips-prog">
+        <div class="chip" data-val="Programming">Programming</div>
+        <div class="chip" data-val="Python">Python</div>
+        <div class="chip" data-val="Java">Java</div>
+        <div class="chip" data-val="JavaScript">JavaScript</div>
+        <div class="chip" data-val="HTML/CSS">HTML/CSS</div>
+        <div class="chip" data-val="SQL">SQL</div>
+        <div class="chip" data-val="Data Structures">Data Structures</div>
+        <div class="chip" data-val="Machine Learning">Machine Learning</div>
+        <div class="chip" data-val="Cloud Computing">Cloud Computing</div>
+        <div class="chip" data-val="Networking">Networking</div>
+        <div class="chip" data-val="Cybersecurity">Cybersecurity</div>
+        <div class="chip" data-val="Database Management">Database Management</div>
+        <div class="chip" data-val="DevOps">DevOps</div>
+        <div class="chip" data-val="Mobile Development">Mobile Development</div>
+        <div class="chip" data-val="Blockchain">Blockchain</div>
+        <div class="chip" data-val="Game Development">Game Development</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-prog" placeholder="Add your own programming skill..." />
+        <button onclick="addCustomChip('custom-prog','chips-prog','hard_skills')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>🔧 Engineering & Technical</h3>
+      <div class="chips-grid" id="chips-eng">
+        <div class="chip" data-val="AutoCAD">AutoCAD</div>
+        <div class="chip" data-val="CAD/CAM">CAD/CAM</div>
+        <div class="chip" data-val="SolidWorks">SolidWorks</div>
+        <div class="chip" data-val="Circuit Design">Circuit Design</div>
+        <div class="chip" data-val="Structural Analysis">Structural Analysis</div>
+        <div class="chip" data-val="Embedded Systems">Embedded Systems</div>
+        <div class="chip" data-val="MATLAB">MATLAB</div>
+        <div class="chip" data-val="PCB Design">PCB Design</div>
+        <div class="chip" data-val="Mechanical Design">Mechanical Design</div>
+        <div class="chip" data-val="Robotics">Robotics</div>
+        <div class="chip" data-val="Lean Manufacturing">Lean Manufacturing</div>
+        <div class="chip" data-val="Six Sigma">Six Sigma</div>
+        <div class="chip" data-val="Quality Control">Quality Control</div>
+        <div class="chip" data-val="GIS">GIS</div>
+        <div class="chip" data-val="Surveying">Surveying</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-eng" placeholder="Add your own technical skill..." />
+        <button onclick="addCustomChip('custom-eng','chips-eng','hard_skills')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>💊 Healthcare & Medical Skills</h3>
+      <div class="chips-grid" id="chips-health">
+        <div class="chip" data-val="Clinical Skills">Clinical Skills</div>
+        <div class="chip" data-val="Patient Care">Patient Care</div>
+        <div class="chip" data-val="First Aid">First Aid</div>
+        <div class="chip" data-val="Medical Knowledge">Medical Knowledge</div>
+        <div class="chip" data-val="Pharmacology">Pharmacology</div>
+        <div class="chip" data-val="Lab Techniques">Lab Techniques</div>
+        <div class="chip" data-val="Physiotherapy">Physiotherapy</div>
+        <div class="chip" data-val="Nutrition Science">Nutrition Science</div>
+        <div class="chip" data-val="Dental Skills">Dental Skills</div>
+        <div class="chip" data-val="Surgical Skills">Surgical Skills</div>
+        <div class="chip" data-val="Counseling">Counseling</div>
+        <div class="chip" data-val="Medical Imaging">Medical Imaging</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-health" placeholder="Add your own healthcare skill..." />
+        <button onclick="addCustomChip('custom-health','chips-health','hard_skills')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>📊 Business, Finance & Analytics</h3>
+      <div class="chips-grid" id="chips-biz">
+        <div class="chip" data-val="MS Excel">MS Excel</div>
+        <div class="chip" data-val="Financial Modeling">Financial Modeling</div>
+        <div class="chip" data-val="Accounting">Accounting</div>
+        <div class="chip" data-val="Taxation">Taxation</div>
+        <div class="chip" data-val="Data Analysis">Data Analysis</div>
+        <div class="chip" data-val="Power BI/Tableau">Power BI/Tableau</div>
+        <div class="chip" data-val="Business Analysis">Business Analysis</div>
+        <div class="chip" data-val="Digital Marketing">Digital Marketing</div>
+        <div class="chip" data-val="SEO">SEO</div>
+        <div class="chip" data-val="Social Media Marketing">Social Media Marketing</div>
+        <div class="chip" data-val="Stock Market Analysis">Stock Market Analysis</div>
+        <div class="chip" data-val="Project Management">Project Management</div>
+        <div class="chip" data-val="Market Research">Market Research</div>
+        <div class="chip" data-val="Business Planning">Business Planning</div>
+        <div class="chip" data-val="Legal Knowledge">Legal Knowledge</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-biz" placeholder="Add your own business/finance skill..." />
+        <button onclick="addCustomChip('custom-biz','chips-biz','hard_skills')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>🎨 Creative & Media Skills</h3>
+      <div class="chips-grid" id="chips-creative">
+        <div class="chip" data-val="Graphic Design">Graphic Design</div>
+        <div class="chip" data-val="Adobe Photoshop">Adobe Photoshop</div>
+        <div class="chip" data-val="Adobe Illustrator">Adobe Illustrator</div>
+        <div class="chip" data-val="Figma">Figma</div>
+        <div class="chip" data-val="Video Editing">Video Editing</div>
+        <div class="chip" data-val="Photography">Photography</div>
+        <div class="chip" data-val="Animation">Animation</div>
+        <div class="chip" data-val="Writing/Copywriting">Writing/Copywriting</div>
+        <div class="chip" data-val="Journalism">Journalism</div>
+        <div class="chip" data-val="Scriptwriting">Scriptwriting</div>
+        <div class="chip" data-val="UI/UX Design">UI/UX Design</div>
+        <div class="chip" data-val="Interior Design">Interior Design</div>
+        <div class="chip" data-val="Fashion Design">Fashion Design</div>
+        <div class="chip" data-val="Music Production">Music Production</div>
+        <div class="chip" data-val="3D Modeling">3D Modeling</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-creative" placeholder="Add your own creative skill..." />
+        <button onclick="addCustomChip('custom-creative','chips-creative','hard_skills')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-nav">
+      <button class="btn-back" onclick="goToStep(0)">← Back</button>
+      <button class="btn-next" onclick="goToStep(2)">Next: Soft Skills →</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- PAGE 2: SOFT SKILLS + STRENGTHS + WEAKNESSES -->
+<div id="page-2" class="page">
+  <div class="assessment-wrapper">
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:55%"></div></div>
+ 
+    <div class="section-header">
+      <div class="section-icon" style="background:#fdeaec;">🤝</div>
+      <div>
+        <h2>Soft Skills & Strengths</h2>
+        <p>Tell us about your personality and interpersonal skills</p>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>💬 Soft Skills / Personal Skills</h3>
+      <div class="chips-grid" id="chips-soft">
+        <div class="chip" data-val="Communication">Communication</div>
+        <div class="chip" data-val="Leadership">Leadership</div>
+        <div class="chip" data-val="Teamwork">Teamwork</div>
+        <div class="chip" data-val="Problem Solving">Problem Solving</div>
+        <div class="chip" data-val="Critical Thinking">Critical Thinking</div>
+        <div class="chip" data-val="Creativity">Creativity</div>
+        <div class="chip" data-val="Empathy">Empathy</div>
+        <div class="chip" data-val="Adaptability">Adaptability</div>
+        <div class="chip" data-val="Time Management">Time Management</div>
+        <div class="chip" data-val="Attention to Detail">Attention to Detail</div>
+        <div class="chip" data-val="Analytical Thinking">Analytical Thinking</div>
+        <div class="chip" data-val="Decision Making">Decision Making</div>
+        <div class="chip" data-val="Negotiation">Negotiation</div>
+        <div class="chip" data-val="Patience">Patience</div>
+        <div class="chip" data-val="Resilience">Resilience</div>
+        <div class="chip" data-val="Curiosity">Curiosity</div>
+        <div class="chip" data-val="Self-Motivation">Self-Motivation</div>
+        <div class="chip" data-val="Integrity">Integrity</div>
+        <div class="chip" data-val="Active Listening">Active Listening</div>
+        <div class="chip" data-val="Public Speaking">Public Speaking</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-soft" placeholder="Add your own soft skill..." />
+        <button onclick="addCustomChip('custom-soft','chips-soft','soft_skills')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>💪 Core Strengths</h3>
+      <div class="chips-grid" id="chips-strength">
+        <div class="chip" data-val="Logical Thinking">Logical Thinking</div>
+        <div class="chip" data-val="Creativity">Creativity</div>
+        <div class="chip" data-val="Math Aptitude">Math Aptitude</div>
+        <div class="chip" data-val="Language Skills">Language Skills</div>
+        <div class="chip" data-val="Scientific Mindset">Scientific Mindset</div>
+        <div class="chip" data-val="Artistic Talent">Artistic Talent</div>
+        <div class="chip" data-val="Physical Fitness">Physical Fitness</div>
+        <div class="chip" data-val="Leadership Ability">Leadership Ability</div>
+        <div class="chip" data-val="People Skills">People Skills</div>
+        <div class="chip" data-val="Business Sense">Business Sense</div>
+        <div class="chip" data-val="Quick Learning">Quick Learning</div>
+        <div class="chip" data-val="Persistence">Persistence</div>
+        <div class="chip" data-val="Innovation Drive">Innovation Drive</div>
+        <div class="chip" data-val="Organized Mind">Organized Mind</div>
+        <div class="chip" data-val="Compassion">Compassion</div>
+        <div class="chip" data-val="Courage">Courage</div>
+        <div class="chip" data-val="Attention to Detail">Attention to Detail</div>
+        <div class="chip" data-val="Storytelling Ability">Storytelling Ability</div>
+        <div class="chip" data-val="Visual Creativity">Visual Creativity</div>
+        <div class="chip" data-val="Patriotism">Patriotism</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-strength" placeholder="Add your own strength..." />
+        <button onclick="addCustomChip('custom-strength','chips-strength','strengths')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>🧩 Known Weaknesses <span class="badge">Self-awareness helps matching</span></h3>
+      <div class="chips-grid" id="chips-weakness">
+        <div class="chip" data-val="Public Speaking fear">Public Speaking fear</div>
+        <div class="chip" data-val="Math/Numbers difficulty">Math/Numbers difficulty</div>
+        <div class="chip" data-val="Impatient">Impatient</div>
+        <div class="chip" data-val="Procrastination">Procrastination</div>
+        <div class="chip" data-val="Disorganized">Disorganized</div>
+        <div class="chip" data-val="Too detail-oriented">Too detail-oriented</div>
+        <div class="chip" data-val="Uncomfortable with conflict">Uncomfortable with conflict</div>
+        <div class="chip" data-val="Difficulty delegating">Difficulty delegating</div>
+        <div class="chip" data-val="Overthinking">Overthinking</div>
+        <div class="chip" data-val="Poor networking">Poor networking</div>
+        <div class="chip" data-val="Physical limitations">Physical limitations</div>
+        <div class="chip" data-val="Difficulty with routine">Difficulty with routine</div>
+        <div class="chip" data-val="Reluctant risk-taker">Reluctant risk-taker</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-weakness" placeholder="Add other weakness..." />
+        <button onclick="addCustomChip('custom-weakness','chips-weakness','weaknesses')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-nav">
+      <button class="btn-back" onclick="goToStep(1)">← Back</button>
+      <button class="btn-next" onclick="goToStep(3)">Next: Interests →</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- PAGE 3: INTERESTS + HOBBIES + EXPERIENCE -->
+<div id="page-3" class="page">
+  <div class="assessment-wrapper">
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:78%"></div></div>
+ 
+    <div class="section-header">
+      <div class="section-icon" style="background:#fdf3e0;">🎯</div>
+      <div>
+        <h2>Interests, Hobbies & Experience</h2>
+        <p>Help us understand what truly excites you</p>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>🌟 Areas of Interest</h3>
+      <div class="chips-grid" id="chips-interest">
+        <div class="chip" data-val="Technology & Computers">Technology & Computers</div>
+        <div class="chip" data-val="Science & Research">Science & Research</div>
+        <div class="chip" data-val="Medicine & Healthcare">Medicine & Healthcare</div>
+        <div class="chip" data-val="Business & Entrepreneurship">Business & Entrepreneurship</div>
+        <div class="chip" data-val="Finance & Stock Markets">Finance & Stock Markets</div>
+        <div class="chip" data-val="Law & Justice">Law & Justice</div>
+        <div class="chip" data-val="Politics & Governance">Politics & Governance</div>
+        <div class="chip" data-val="Art & Design">Art & Design</div>
+        <div class="chip" data-val="Music & Performing Arts">Music & Performing Arts</div>
+        <div class="chip" data-val="Writing & Journalism">Writing & Journalism</div>
+        <div class="chip" data-val="Teaching & Mentoring">Teaching & Mentoring</div>
+        <div class="chip" data-val="Nature & Environment">Nature & Environment</div>
+        <div class="chip" data-val="Sports & Fitness">Sports & Fitness</div>
+        <div class="chip" data-val="Social Service">Social Service</div>
+        <div class="chip" data-val="Travel & Hospitality">Travel & Hospitality</div>
+        <div class="chip" data-val="Defence & Military">Defence & Military</div>
+        <div class="chip" data-val="Gaming & Entertainment">Gaming & Entertainment</div>
+        <div class="chip" data-val="Fashion & Lifestyle">Fashion & Lifestyle</div>
+        <div class="chip" data-val="Food & Nutrition">Food & Nutrition</div>
+        <div class="chip" data-val="Current Affairs">Current Affairs</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-interest" placeholder="Add your own interest..." />
+        <button onclick="addCustomChip('custom-interest','chips-interest','interests')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>🎮 Hobbies & Activities</h3>
+      <div class="chips-grid" id="chips-hobby">
+        <div class="chip" data-val="Coding">Coding</div>
+        <div class="chip" data-val="Gaming">Gaming</div>
+        <div class="chip" data-val="Drawing/Sketching">Drawing/Sketching</div>
+        <div class="chip" data-val="Photography">Photography</div>
+        <div class="chip" data-val="Blogging/Vlogging">Blogging/Vlogging</div>
+        <div class="chip" data-val="Reading Books">Reading Books</div>
+        <div class="chip" data-val="Writing Stories">Writing Stories</div>
+        <div class="chip" data-val="Playing Sports">Playing Sports</div>
+        <div class="chip" data-val="Gym/Fitness">Gym/Fitness</div>
+        <div class="chip" data-val="Cooking/Baking">Cooking/Baking</div>
+        <div class="chip" data-val="Singing/Music">Singing/Music</div>
+        <div class="chip" data-val="Dancing">Dancing</div>
+        <div class="chip" data-val="Travelling">Travelling</div>
+        <div class="chip" data-val="Watching Films/Documentaries">Watching Films/Documentaries</div>
+        <div class="chip" data-val="Gardening/Farming">Gardening/Farming</div>
+        <div class="chip" data-val="Volunteering">Volunteering</div>
+        <div class="chip" data-val="Debate/MUNs">Debate/MUNs</div>
+        <div class="chip" data-val="Electronics Tinkering">Electronics Tinkering</div>
+        <div class="chip" data-val="Open Source Contribution">Open Source Contribution</div>
+        <div class="chip" data-val="DIY Projects">DIY Projects</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-hobby" placeholder="Add your own hobby..." />
+        <button onclick="addCustomChip('custom-hobby','chips-hobby','interests')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>🏆 Experience <span class="badge">Optional</span></h3>
+      <div class="chips-grid" id="chips-exp">
+        <div class="chip" data-val="Internship experience">Internship experience</div>
+        <div class="chip" data-val="Freelance work">Freelance work</div>
+        <div class="chip" data-val="Personal projects">Personal projects</div>
+        <div class="chip" data-val="Part-time work">Part-time work</div>
+        <div class="chip" data-val="Full-time work experience">Full-time work experience</div>
+        <div class="chip" data-val="Research experience">Research experience</div>
+        <div class="chip" data-val="Teaching/Tutoring experience">Teaching/Tutoring experience</div>
+        <div class="chip" data-val="Startup experience">Startup experience</div>
+        <div class="chip" data-val="Government exam preparation">Government exam preparation</div>
+        <div class="chip" data-val="Sports/Athletic achievement">Sports/Athletic achievement</div>
+        <div class="chip" data-val="Military/NCC training">Military/NCC training</div>
+        <div class="chip" data-val="NGO/Volunteer work">NGO/Volunteer work</div>
+        <div class="chip" data-val="Competitions/Hackathons">Competitions/Hackathons</div>
+        <div class="chip" data-val="No formal experience yet">No formal experience yet</div>
+      </div>
+      <div class="add-custom">
+        <input type="text" id="custom-exp" placeholder="Add your own experience..." />
+        <button onclick="addCustomChip('custom-exp','chips-exp','experience')">+ Add</button>
+      </div>
+    </div>
+ 
+    <div class="form-card">
+      <h3>✍️ Anything Else? <span class="badge">Optional free text</span></h3>
+      <div class="form-field">
+        <label>Describe yourself, your aspirations, or any other relevant details</label>
+        <textarea id="inp-other" placeholder="e.g. I am passionate about climate change and want to combine technology with environmental work. I enjoy solving complex problems and have always been curious about how things work..."></textarea>
+      </div>
+    </div>
+ 
+    <div class="form-nav">
+      <button class="btn-back" onclick="goToStep(2)">← Back</button>
+      <button class="btn-analyze" onclick="analyzeAndShowResults()">
+        ✨ Find My Career Matches
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<!-- PAGE 4: RESULTS -->
+<div id="page-results" class="page">
+  <div id="analyzing-state" class="analyzing">
+    <div class="analyzing-spinner"></div>
+    <h3>Analyzing your profile…</h3>
+    <p>Matching you against 117 careers across 15 domains</p>
+  </div>
+  <div id="results-content" style="display:none;">
+    <div class="results-wrapper">
+      <div class="results-hero">
+        <div class="results-hero-top">
+          <div>
+            <h2>Your Career Matches, <span id="res-name">Explorer</span></h2>
+            <p id="res-subtitle">Based on your profile analysis</p>
+          </div>
+          <button class="btn-restart" onclick="restartAssessment()">↺ Retake</button>
+        </div>
+        <div class="results-tags" id="res-tags"></div>
+      </div>
+ 
+      <div class="filter-bar">
+        <span>Filter:</span>
+        <button class="filter-btn active" onclick="filterResults('all',this)">All Results</button>
+        <button class="filter-btn" onclick="filterResults('top5',this)">Top 5</button>
+        <button class="filter-btn" onclick="filterResults('tech',this)">Technology</button>
+        <button class="filter-btn" onclick="filterResults('gov',this)">Government</button>
+        <button class="filter-btn" onclick="filterResults('creative',this)">Creative</button>
+        <button class="filter-btn" onclick="filterResults('health',this)">Healthcare</button>
+        <button class="filter-btn" onclick="filterResults('business',this)">Business</button>
+      </div>
+ 
+      <div class="results-grid" id="results-grid"></div>
+    </div>
+  </div>
+</div>
+ 
+<script>
+// ─── DATABASE ───
+const CAREERS = [{"id":1,"category":"💻 Technology & IT","title":"Software Developer","hard_skills":"Programming (Python/Java/C++), Data Structures & Algorithms, OOP, Version Control (Git), Debugging, Software Design Patterns, Database Queries (SQL)","soft_skills":"Problem Solving, Attention to Detail, Teamwork, Communication, Time Management, Continuous Learning","strengths":"Logical Thinking, Patience, Creativity, Analytical Mind, Self-Learning Ability","interests":"Coding, Gaming, Open Source Projects, Reading Tech Blogs, Hackathons, Math Puzzles","education":"Internship / Projects (GitHub), B.Tech/BCA/MCA degree, Coding platforms (LeetCode, HackerRank) practice"},{"id":2,"category":"💻 Technology & IT","title":"Full Stack Developer","hard_skills":"HTML/CSS/JS, React/Angular (Frontend), Node.js/Django/Spring (Backend), REST APIs, Databases (MySQL/MongoDB), Docker, Cloud basics","soft_skills":"Problem Solving, Collaboration, Communication, Adaptability, Time Management","strengths":"Versatility, Quick Learning, Systems Thinking, Detail Oriented","interests":"Building web projects, UI design, API integration experiments, Watching tech tutorials","education":"Personal web projects, Internship, B.Tech/BCA, Full Stack bootcamp certificates"},{"id":3,"category":"💻 Technology & IT","title":"Frontend Developer","hard_skills":"HTML, CSS, JavaScript, React/Vue/Angular, Responsive Design, Browser DevTools, Figma/design tools","soft_skills":"Eye for Design, Communication, Collaboration, Attention to Detail","strengths":"Creativity, Aesthetics Sense, Pixel Perfection, User Empathy","interests":"UI/UX design, Drawing/sketching, Web browsing & analyzing sites, CSS art","education":"Portfolio websites, Internship, B.Tech/BCA, Frontend certification courses"},{"id":4,"category":"💻 Technology & IT","title":"Backend Developer","hard_skills":"Python/Java/Node.js, REST APIs, Databases (SQL/NoSQL), Server Management, Authentication, Caching (Redis), Microservices","soft_skills":"Problem Solving, Logical Thinking, Teamwork, Documentation","strengths":"Systematic Thinking, Reliability, Performance Focus","interests":"System design, Database design, Server experiments, Reading tech docs","education":"Backend projects, B.Tech/MCA, Internship, Cloud certifications (AWS/Azure)"},{"id":5,"category":"💻 Technology & IT","title":"Web Developer","hard_skills":"HTML/CSS/JS, CMS (WordPress), Basic Backend, Hosting & Deployment, SEO basics, Responsive Design","soft_skills":"Client Communication, Creativity, Problem Solving, Time Management","strengths":"Versatility, Creative Eye, Quick Learner","interests":"Building websites, Blogging, Graphic design, Online business interest","education":"Freelance projects, Online courses, Portfolio, Basic degree or diploma"},{"id":6,"category":"💻 Technology & IT","title":"Mobile App Developer","hard_skills":"Flutter/React Native or Swift/Kotlin, Mobile UI Design, App Store deployment, APIs, Local Storage, Push Notifications","soft_skills":"User Experience Focus, Problem Solving, Attention to Detail, Collaboration","strengths":"Innovation, Mobile-first thinking, Patience for debugging","interests":"Using mobile apps critically, Gaming, UI design, Tech gadgets","education":"App projects on Play Store/App Store, Internship, B.Tech, Mobile dev courses"},{"id":7,"category":"💻 Technology & IT","title":"AI Engineer","hard_skills":"Python, Machine Learning, Deep Learning (TensorFlow/PyTorch), NLP, Computer Vision, Model Deployment, Cloud AI services","soft_skills":"Research Mindset, Problem Solving, Communication, Collaboration","strengths":"Curiosity, Math Aptitude, Innovation Drive, Patience","interests":"Reading AI papers, Math & statistics, Kaggle competitions, Science interest","education":"B.Tech + M.Tech (AI/ML), Kaggle projects, Research internships, AI certifications"},{"id":8,"category":"💻 Technology & IT","title":"Machine Learning Engineer","hard_skills":"Python, Scikit-learn, TensorFlow/PyTorch, Statistics, Data Preprocessing, Feature Engineering, Model Evaluation","soft_skills":"Analytical Thinking, Patience, Research Ability, Communication","strengths":"Math Strength, Curiosity, Systematic Approach","interests":"Statistics, Data analysis, Kaggle challenges, Reading ML papers","education":"B.Tech/M.Tech, ML courses (Coursera/edX), Kaggle portfolio, Internship"},{"id":9,"category":"💻 Technology & IT","title":"Data Scientist","hard_skills":"Python/R, Statistics, Machine Learning, Data Visualization (Matplotlib/Tableau), SQL, Big Data basics, Storytelling with data","soft_skills":"Analytical Thinking, Communication, Business Understanding, Curiosity","strengths":"Pattern Recognition, Logical Mind, Storytelling Ability","interests":"Statistics, Data puzzles, Business news, Excel/data analysis","education":"B.Tech/BSc Statistics, Data Science courses, Kaggle, Company internships"},{"id":10,"category":"💻 Technology & IT","title":"Data Analyst","hard_skills":"Excel, SQL, Python/R basics, Tableau/Power BI, Statistics, Data Cleaning, Dashboard creation","soft_skills":"Attention to Detail, Communication, Business Acumen, Problem Solving","strengths":"Organized Mind, Curiosity, Presentation Skills","interests":"Numbers & patterns, Excel experiments, Business reports reading","education":"BCA/B.Com/B.Tech, SQL + Excel + Tableau certification, Internship"},{"id":11,"category":"💻 Technology & IT","title":"Cyber Security Analyst","hard_skills":"Network Security, Ethical Hacking basics, SIEM tools, Firewalls, Vulnerability Assessment, Incident Response, Linux","soft_skills":"Vigilance, Analytical Thinking, Problem Solving, Communication","strengths":"Attention to Detail, Curiosity, Ethical Mindset, Stress Handling","interests":"Hacking (ethical), CTF competitions, Network experiments, Security news","education":"B.Tech/BCA, CEH/CISSP certifications, Bug bounty programs, Internship"},{"id":12,"category":"💻 Technology & IT","title":"Ethical Hacker","hard_skills":"Penetration Testing, Kali Linux, Network Protocols, Web App Security, OWASP, Metasploit, Social Engineering awareness","soft_skills":"Problem Solving, Ethical Thinking, Communication, Patience","strengths":"Curiosity, Persistence, Attention to Detail, Creativity","interests":"CTF challenges, Security research, Hacking news, Programming","education":"CEH/OSCP certification, Bug bounty programs, B.Tech, Security internships"},{"id":13,"category":"💻 Technology & IT","title":"Cloud Engineer","hard_skills":"AWS/Azure/GCP, Linux, Networking, Docker/Kubernetes, Terraform (IaC), Monitoring tools, Security basics","soft_skills":"Problem Solving, Teamwork, Communication, Adaptability","strengths":"Systematic Thinking, Continuous Learning, Detail Focus","interests":"Server experiments, Networking, Open source, Cloud tutorials","education":"B.Tech, AWS/Azure/GCP certifications, Cloud internship, Linux practice"},{"id":14,"category":"💻 Technology & IT","title":"DevOps Engineer","hard_skills":"CI/CD (Jenkins/GitHub Actions), Docker, Kubernetes, Linux, Scripting (Bash/Python), Monitoring (Prometheus/Grafana), Cloud","soft_skills":"Collaboration, Problem Solving, Communication, Adaptability","strengths":"Systems Thinking, Automation Mindset, Reliability Focus","interests":"Automation projects, Linux experiments, Open source contributions","education":"B.Tech, DevOps certifications, CI/CD pipeline projects, Internship"},{"id":15,"category":"💻 Technology & IT","title":"Hardware Engineer","hard_skills":"Circuit Design, PCB Design (Altium/Eagle), Electronics, Embedded Systems, CAD tools, Component Testing","soft_skills":"Attention to Detail, Problem Solving, Patience, Teamwork","strengths":"Technical Precision, Systematic Thinking, Hands-on Nature","interests":"Electronics hobby projects, Arduino/Raspberry Pi, Robotics kits","education":"B.Tech (ECE/EEE), Lab internships, Electronics projects portfolio"},{"id":16,"category":"💻 Technology & IT","title":"Network Engineer","hard_skills":"Routing & Switching (Cisco), TCP/IP, Firewall configuration, VPN, Network Monitoring, CCNA/CCNP knowledge","soft_skills":"Problem Solving, Communication, Patience, Teamwork","strengths":"Systematic Thinking, Attention to Detail, Calm Under Pressure","interests":"Networking experiments, Tech gadgets, Infrastructure interest","education":"B.Tech (CSE/ECE), CCNA/CCNP certifications, Internship, Networking lab practice"},{"id":17,"category":"💻 Technology & IT","title":"Database Administrator","hard_skills":"SQL (MySQL/PostgreSQL/Oracle), Database Design, Backup & Recovery, Performance Tuning, Security, NoSQL basics","soft_skills":"Attention to Detail, Problem Solving, Organization, Communication","strengths":"Precision, Reliability, Systematic Nature","interests":"Data organization, Excel, Database design puzzles","education":"B.Tech/BCA, Oracle/MySQL certification, DBA internship"},{"id":18,"category":"💻 Technology & IT","title":"Blockchain Developer","hard_skills":"Solidity, Ethereum, Smart Contracts, Web3.js, Cryptography basics, DeFi concepts, NFT development","soft_skills":"Problem Solving, Innovation, Analytical Thinking, Teamwork","strengths":"Technical Curiosity, Innovation Drive, Ethics in Tech","interests":"Cryptocurrency interest, Decentralization concepts, Programming","education":"B.Tech, Blockchain courses, Personal smart contract projects, Hackathons"},{"id":19,"category":"💻 Technology & IT","title":"Game Developer","hard_skills":"Unity/Unreal Engine, C#/C++, Game Physics, 3D Modeling basics, Animation, Game Design principles","soft_skills":"Creativity, Problem Solving, Teamwork, Attention to Detail","strengths":"Passion for Gaming, Innovation, Storytelling, Persistence","interests":"Gaming (critically), Game design, Programming, 3D art","education":"B.Tech/BCA, Game dev courses, Personal game projects, Game jam participation"},{"id":20,"category":"💻 Technology & IT","title":"Software Tester","hard_skills":"Manual Testing, Automation Testing (Selenium/Cypress), Test Cases, Bug Reporting, API Testing (Postman), SDLC understanding","soft_skills":"Attention to Detail, Analytical Thinking, Communication, Patience","strengths":"Perfectionism, Critical Eye, Methodical Approach","interests":"Breaking things (testing mindset), Puzzles, QA processes interest","education":"B.Tech/BCA, ISTQB certification, Testing internship, Automation tool practice"},{"id":21,"category":"🏗️ Core Engineering","title":"Civil Engineer","hard_skills":"Structural Analysis, AutoCAD, Construction Materials, Survey techniques, Project Estimation, IS Codes knowledge","soft_skills":"Problem Solving, Communication, Teamwork, Leadership","strengths":"Spatial Thinking, Precision, Organized Mind, Responsibility","interests":"Building & construction interest, Architecture, Math, Site visits","education":"B.Tech (Civil), Internship at construction firms, Site work experience, AutoCAD certification"},{"id":22,"category":"🏗️ Core Engineering","title":"Structural Engineer","hard_skills":"Structural Analysis (STAAD Pro/ETABS), RCC Design, Steel Design, Foundation Engineering, Load Calculations","soft_skills":"Analytical Thinking, Attention to Detail, Problem Solving, Communication","strengths":"Mathematical Precision, Logical Mind, Safety Consciousness","interests":"Math, Physics, Architecture, Building designs","education":"B.Tech (Civil) + M.Tech (Structural), Design software training, Structural firm internship"},{"id":23,"category":"🏗️ Core Engineering","title":"Mechanical Engineer","hard_skills":"CAD (SolidWorks/AutoCAD), Thermodynamics, Fluid Mechanics, Manufacturing Processes, Material Science","soft_skills":"Problem Solving, Analytical Thinking, Teamwork, Communication","strengths":"Technical Aptitude, Hands-on Nature, Systematic Thinking","interests":"Machines, Cars, Physics experiments, Workshop activities","education":"B.Tech (Mechanical), Workshop internship, CAD certification, Industry exposure"},{"id":24,"category":"🏗️ Core Engineering","title":"Electrical Engineer","hard_skills":"Circuit Analysis, Power Systems, Electrical Machines, Control Systems, PLC Programming, AutoCAD Electrical","soft_skills":"Problem Solving, Attention to Detail, Safety Awareness, Teamwork","strengths":"Technical Precision, Analytical Mind, Safety Consciousness","interests":"Electronics experiments, Physics, Electrical gadgets, DIY projects","education":"B.Tech (EEE), Electrical firm internship, License/certification, Field experience"},{"id":25,"category":"🏗️ Core Engineering","title":"Electronics Engineer","hard_skills":"Circuit Design, PCB Design, Embedded Systems, Signal Processing, VLSI basics, Oscilloscope use","soft_skills":"Analytical Thinking, Problem Solving, Patience, Attention to Detail","strengths":"Technical Precision, Curiosity, Hands-on Nature","interests":"Electronics hobby, Arduino, Circuit building, Physics interest","education":"B.Tech (ECE), Electronics lab internship, Project portfolio, Certification courses"},{"id":26,"category":"🏗️ Core Engineering","title":"Automobile Engineer","hard_skills":"Vehicle Dynamics, Engine Design, CAD/CAM, Manufacturing, Fuel Systems, EV Technology basics","soft_skills":"Problem Solving, Teamwork, Innovation, Attention to Detail","strengths":"Passion for Vehicles, Technical Aptitude, Innovation Drive","interests":"Cars, Bikes, Racing, Mechanical experiments, Auto shows","education":"B.Tech (Mechanical/Auto), Automobile company internship, Industry exposure"},{"id":27,"category":"🏗️ Core Engineering","title":"Aerospace Engineer","hard_skills":"Aerodynamics, Propulsion Systems, Structural Analysis, Flight Mechanics, CAD, MATLAB","soft_skills":"Analytical Thinking, Problem Solving, Precision, Teamwork","strengths":"Math Aptitude, Scientific Curiosity, Attention to Detail","interests":"Aviation, Space, Physics, Astronomy, Model aircraft","education":"B.Tech (Aerospace), ISRO/DRDO internship, Research projects, M.Tech"},{"id":28,"category":"🏗️ Core Engineering","title":"Robotics Engineer","hard_skills":"Programming (Python/C++), ROS, Sensors & Actuators, Mechanical Design, AI/ML basics, Control Systems","soft_skills":"Problem Solving, Creativity, Teamwork, Analytical Thinking","strengths":"Innovation, Technical Curiosity, Interdisciplinary Thinking","interests":"Robotics kits, AI interest, Electronics, Sci-fi, STEM competitions","education":"B.Tech (Mechanical/ECE/CSE), Robotics lab work, Competition participation, Research internship"},{"id":29,"category":"🏗️ Core Engineering","title":"Industrial Engineer","hard_skills":"Operations Research, Process Optimization, Lean Manufacturing, Six Sigma, ERP systems, Statistical Analysis","soft_skills":"Analytical Thinking, Problem Solving, Communication, Leadership","strengths":"Efficiency Mindset, Systematic Thinking, Process Orientation","interests":"Process improvement, Statistics, Manufacturing interest, Operations","education":"B.Tech (Industrial/Mechanical), Six Sigma certification, Manufacturing internship"},{"id":30,"category":"🏗️ Core Engineering","title":"Production Engineer","hard_skills":"Manufacturing Processes, Quality Control, CNC Programming, CAD/CAM, Lean Manufacturing, Production Planning","soft_skills":"Attention to Detail, Problem Solving, Leadership, Communication","strengths":"Efficiency Focus, Hands-on Nature, Organized Mind","interests":"Factory/manufacturing interest, Machine operations, Process improvement","education":"B.Tech (Mechanical/Production), Factory internship, Quality certification"},{"id":31,"category":"🏗️ Core Engineering","title":"Petroleum Engineer","hard_skills":"Reservoir Engineering, Drilling Technology, Well Logging, Petroleum Geology, Thermodynamics, Simulation software","soft_skills":"Problem Solving, Analytical Thinking, Physical Stamina, Teamwork","strengths":"Technical Aptitude, Risk Assessment, Field Adaptability","interests":"Earth sciences, Geography, Chemistry, Energy sector interest","education":"B.Tech (Petroleum), ONGC/oil company internship, Field exposure, M.Tech"},{"id":32,"category":"🏗️ Core Engineering","title":"Mining Engineer","hard_skills":"Mine Planning, Blasting techniques, Ground Control, Ventilation, Mineral Processing, Safety Regulations","soft_skills":"Problem Solving, Physical Stamina, Leadership, Safety Awareness","strengths":"Courage, Technical Aptitude, Field Adaptability","interests":"Geology, Earth sciences, Outdoor activities, Heavy machinery","education":"B.Tech (Mining), Mine internship, Safety certification, Field exposure"},{"id":33,"category":"🏛️ Government & Public Service","title":"IAS Officer","hard_skills":"Administrative Law, Policy Making, Public Finance, Government Schemes knowledge, Report Writing, MS Office","soft_skills":"Leadership, Communication, Decision Making, Empathy, Problem Solving, Integrity","strengths":"Strong Ethics, Leadership Ability, Mass Communication, Resilience, Vision","interests":"Current affairs, Politics, Social issues, Reading books (history/polity), Debate, Community service","education":"UPSC Civil Services Exam, Any bachelor's degree, Optional subject mastery, Essay & answer writing practice"},{"id":34,"category":"🏛️ Government & Public Service","title":"IPS Officer","hard_skills":"Criminal Law (IPC/CrPC), Investigation Techniques, Forensic basics, Leadership, Physical Fitness, Firearms handling","soft_skills":"Leadership, Decision Making under Pressure, Empathy, Communication, Integrity","strengths":"Courage, Physical & Mental Toughness, Strong Ethics, Command Ability","interests":"Current affairs, Crime news, Law interest, Physical fitness, Social justice","education":"UPSC Civil Services Exam, Any bachelor's degree, Physical fitness training, IPS specific training at Sardar Patel Police Academy"},{"id":35,"category":"🏛️ Government & Public Service","title":"IFS Officer","hard_skills":"International Relations, Diplomacy, Foreign Languages, Protocol, Treaty knowledge, Report Writing","soft_skills":"Communication, Cultural Sensitivity, Negotiation, Adaptability, Integrity","strengths":"Global Mindset, Linguistic Ability, Diplomatic Temperament, Resilience","interests":"World politics, International news, Languages, Travel, Culture","education":"UPSC Civil Services Exam, Any bachelor's degree, Foreign language learning, FSOI training"},{"id":36,"category":"🏛️ Government & Public Service","title":"IRS Officer","hard_skills":"Taxation Law (Income Tax/GST), Financial Analysis, Audit, Investigation, Accounting principles","soft_skills":"Analytical Thinking, Integrity, Communication, Attention to Detail","strengths":"Honesty, Methodical Mind, Numerical Aptitude","interests":"Finance, Economics, Tax policies, Accounts, Business news","education":"UPSC Civil Services Exam, Any bachelor's degree (commerce preferred), Tax law knowledge"},{"id":37,"category":"🏛️ Government & Public Service","title":"Group 1 Officer","hard_skills":"AP/Telangana State Acts, Revenue Administration, Local Governance, Report Writing, Government Schemes","soft_skills":"Leadership, Communication, Problem Solving, Integrity, Public Service mindset","strengths":"Strong Ethics, Service Orientation, Decision Making, Resilience","interests":"Current affairs (state level), Telugu culture, Social issues, Public welfare","education":"APPSC/TSPSC Group 1 Exam, Any bachelor's degree, State-specific preparation"},{"id":38,"category":"🏛️ Government & Public Service","title":"Group 2 Officer","hard_skills":"General knowledge, Telugu history & culture, State government functions, Basic administration","soft_skills":"Communication, Problem Solving, Integrity, Teamwork","strengths":"Service Mindset, Organized Nature, Reliability","interests":"Current affairs, Telugu culture, Government jobs interest, Reading","education":"APPSC/TSPSC Group 2 Exam, Any bachelor's degree, Coaching for exam preparation"},{"id":39,"category":"🏛️ Government & Public Service","title":"Police Officer","hard_skills":"Criminal Law (IPC/CrPC), First Aid, Traffic Management, Physical Fitness, Crowd Control, Investigation basics","soft_skills":"Courage, Communication, Leadership, Decision Making, Empathy","strengths":"Physical Fitness, Courage, Ethics, Community Service mindset","interests":"Physical fitness, Social justice, Law & order interest, Community welfare","education":"State Police SI/Constable exam, Physical tests, Training at Police Academy"},{"id":40,"category":"🏛️ Government & Public Service","title":"Railway Officer","hard_skills":"Railway Operations, Engineering basics, Traffic & Transportation, Safety Protocols, Government administration","soft_skills":"Leadership, Problem Solving, Communication, Teamwork","strengths":"Organizational Ability, Systematic Thinking, Reliability","interests":"Transportation, Engineering, Government services, Trains/infrastructure","education":"UPSC/RRB NTPC/Group B exams, Engineering degree (for technical posts), Training at Railway institutes"},{"id":41,"category":"🏛️ Government & Public Service","title":"Banking Officer","hard_skills":"Banking products & services, Financial Analysis, Credit Assessment, RBI regulations, Computer proficiency, Customer service","soft_skills":"Communication, Numerical Aptitude, Problem Solving, Integrity","strengths":"Trustworthiness, Numerical Ability, Customer Focus, Reliability","interests":"Finance, Economics, Math, Banking news, Stock market","education":"IBPS PO/SBI PO exam, Any bachelor's degree, Banking awareness preparation"},{"id":42,"category":"🏛️ Government & Public Service","title":"Revenue Officer","hard_skills":"Land Records (ROR), Revenue Laws, Survey & Settlement, Government land administration","soft_skills":"Integrity, Communication, Problem Solving, Empathy","strengths":"Honesty, Systematic Thinking, Community Service","interests":"Land administration, Rural areas, Government schemes, Social welfare","education":"State Revenue department exam (RI/Tahsildar), Any degree, Revenue law knowledge"},{"id":43,"category":"🏛️ Government & Public Service","title":"Municipal Commissioner","hard_skills":"Urban Administration, Infrastructure Planning, Finance & Budgeting, Public Health, Policy Implementation","soft_skills":"Leadership, Communication, Decision Making, Public Service mindset","strengths":"Vision, Organizational Ability, Strong Ethics, Resilience","interests":"Urban development, City planning, Social issues, Public administration","education":"UPSC/State PSC (IAS cadre mostly), Engineering/Law/Management background beneficial"},{"id":44,"category":"🏛️ Government & Public Service","title":"Secretariat Officer","hard_skills":"Government procedures, File Noting, Report Writing, Policy drafting, MS Office proficiency","soft_skills":"Communication, Attention to Detail, Organization, Integrity","strengths":"Methodical Nature, Reliability, Discretion","interests":"Government functions, Administration, Reading, Organized work","education":"State Secretariat exam (APPSC/TSPSC), Any degree, Government awareness"},{"id":45,"category":"🇮🇳 Defence & Nation Service","title":"Army Officer","hard_skills":"Military tactics, Weapons handling, Map reading, Leadership training, Physical fitness, First Aid, Communication equipment","soft_skills":"Leadership, Courage, Teamwork, Discipline, Decision Making under Pressure","strengths":"Patriotism, Physical Strength, Mental Toughness, Sacrifice, Leadership","interests":"Physical fitness, Patriotism, Outdoor activities, Leadership, Strategy games","education":"NDA/CDS exam, Any bachelor's degree (for CDS), Physical fitness training, IMA/OTA training"},{"id":46,"category":"🇮🇳 Defence & Nation Service","title":"Navy Officer","hard_skills":"Naval navigation, Marine engineering basics, Weapons systems, Seamanship, Meteorology, Communication","soft_skills":"Leadership, Teamwork, Courage, Adaptability, Decision Making","strengths":"Physical Fitness, Patriotism, Adaptability to Sea life, Mental Toughness","interests":"Ocean/sea interest, Physics, Geography, Adventure activities, Patriotism","education":"NDA/CDS/INET exam, Engineering degree preferred, INS training"},{"id":47,"category":"🇮🇳 Defence & Nation Service","title":"Air Force Officer","hard_skills":"Aeronautics, Aviation principles, Aircraft systems, Navigation, Physics, Communication protocols","soft_skills":"Quick Decision Making, Teamwork, Focus, Courage, Leadership","strengths":"Spatial Intelligence, Quick Reflexes, Focus, Patriotism","interests":"Aviation, Aircraft, Science, Physics, Speed, Adventure","education":"NDA/CDS/AFCAT exam, Physics & Math background, Flying training at AFA Hyderabad"},{"id":48,"category":"🇮🇳 Defence & Nation Service","title":"Coast Guard Officer","hard_skills":"Maritime law, Sea navigation, Search & Rescue, Marine environment protection, Anti-smuggling operations","soft_skills":"Courage, Physical Fitness, Teamwork, Quick Decision Making","strengths":"Sea Adaptability, Physical Toughness, Patriotism, Environmental Awareness","interests":"Ocean, Marine life, Environment, Adventure, Water sports","education":"Coast Guard recruitment exam, Physical fitness, Training at Coast Guard Academy"},{"id":49,"category":"🇮🇳 Defence & Nation Service","title":"Fire Officer","hard_skills":"Firefighting techniques, Rescue operations, Fire safety standards, First Aid, Hazmat handling, Emergency response","soft_skills":"Courage, Physical Fitness, Quick Decision Making, Teamwork","strengths":"Bravery, Physical Toughness, Calmness under Pressure, Service Mindset","interests":"Emergency services, Physical fitness, Community service, Rescue operations","education":"Fire Service recruitment exam, Physical training, Fire Academy training"},{"id":50,"category":"🇮🇳 Defence & Nation Service","title":"Disaster Management Officer","hard_skills":"Emergency planning, Risk Assessment, Search & Rescue, First Aid, Crisis Communication, GIS basics","soft_skills":"Leadership, Quick Decision Making, Communication, Empathy, Physical Fitness","strengths":"Calm under Pressure, Compassion, Organizational Ability, Resilience","interests":"Social welfare, Emergency services, Community help, Geography","education":"Any degree + NDMA courses, State disaster management training, Internship with SDMA/NDRF"},{"id":51,"category":"🇮🇳 Defence & Nation Service","title":"Intelligence Officer","hard_skills":"Surveillance techniques, Data Analysis, Cryptography basics, Foreign language, Report Writing, Investigation","soft_skills":"Sharp Observation, Critical Thinking, Discretion, Adaptability","strengths":"Sharp Mind, Secrecy, Patriotism, Analytical Intelligence","interests":"Puzzles, Investigation, Language learning, Current affairs, Strategy","education":"UPSC/SSC/Defence recruitment, Special training at intelligence bureaus"},{"id":52,"category":"🇮🇳 Defence & Nation Service","title":"Paramilitary Officer","hard_skills":"Weapon handling, Physical Fitness, Crowd Control, First Aid, Counter-terrorism basics, Map Reading","soft_skills":"Courage, Leadership, Teamwork, Discipline, Physical Fitness","strengths":"Physical Toughness, Patriotism, Discipline, Sacrifice","interests":"Physical fitness, Patriotism, Security, Community protection","education":"CAPF/CRPF/BSF exam, Physical fitness training, Para-military training school"},{"id":53,"category":"🩺 Healthcare & Medicine","title":"Doctor","hard_skills":"Medical knowledge (anatomy, physiology, pharmacology), Clinical skills, Diagnosis, Patient examination, Medical procedures","soft_skills":"Empathy, Communication, Critical Thinking, Decision Making, Patience, Emotional Intelligence","strengths":"Compassion, Precision, Calm Under Pressure, Continuous Learning Drive","interests":"Biology/science interest, Helping others, Reading medical journals, Social service","education":"MBBS (NEET entrance), 5.5 years degree + 1 year internship, PG (MD/MS) optional"},{"id":54,"category":"🩺 Healthcare & Medicine","title":"Surgeon","hard_skills":"Surgical techniques (specialty specific), Anatomy mastery, Anesthesia knowledge, Instrument handling, Post-op care","soft_skills":"Precision, Decision Making, Physical Stamina, Calm Under Pressure, Teamwork","strengths":"Steady Hands, Focus, Courage, Compassion, Physical Stamina","interests":"Biology, Precision work (crafts), Medical science, Helping patients","education":"MBBS + MS/MCh (surgery specialty), Super-specialization, Residency training"},{"id":55,"category":"🩺 Healthcare & Medicine","title":"Dentist","hard_skills":"Dental procedures (fillings, extractions, root canal), Dental anatomy, X-ray interpretation, Oral surgery basics","soft_skills":"Attention to Detail, Communication, Patience, Manual Dexterity","strengths":"Precise Hands, Patience, Empathy, Business Sense (for clinic)","interests":"Biology, Helping people, Precision work, Art/crafts","education":"BDS (NEET entrance), 5 years + 1 year internship, MDS optional"},{"id":56,"category":"🩺 Healthcare & Medicine","title":"Nurse","hard_skills":"Patient care, Medication administration, Vital signs monitoring, Wound care, Medical equipment use, First Aid","soft_skills":"Empathy, Communication, Teamwork, Patience, Resilience","strengths":"Compassion, Physical Stamina, Calm Nature, Service Mindset","interests":"Caring for others, Biology, Social service, Community health","education":"BSc Nursing / GNM diploma, Hospital internship, State Nursing Council registration"},{"id":57,"category":"🩺 Healthcare & Medicine","title":"Physiotherapist","hard_skills":"Anatomy & Kinesiology, Exercise therapy, Manual therapy, Electrotherapy, Rehabilitation techniques","soft_skills":"Empathy, Communication, Patience, Physical Stamina","strengths":"Compassion, Motivating Others, Physical Strength, Patience","interests":"Sports, Human body, Exercise, Helping injured people, Biology","education":"BPT (Bachelor of Physiotherapy), 4.5 years + internship, MCC registration"},{"id":58,"category":"🩺 Healthcare & Medicine","title":"Pharmacist","hard_skills":"Drug knowledge (pharmacology), Dispensing, Drug interactions, Inventory management, Prescription reading","soft_skills":"Attention to Detail, Communication, Customer Service, Integrity","strengths":"Precision, Trustworthiness, Organized Nature, Chemical Aptitude","interests":"Chemistry, Biology, Drug science, Healthcare systems","education":"B.Pharm / D.Pharm, Pharmacy Council registration, Hospital or retail pharmacy experience"},{"id":59,"category":"🩺 Healthcare & Medicine","title":"Nutritionist","hard_skills":"Food science, Dietetics, Nutritional assessment, Meal planning, Medical nutrition therapy, Body composition analysis","soft_skills":"Empathy, Communication, Persuasion, Patience","strengths":"Health Passion, Scientific Mindset, Motivating Others","interests":"Food, Health, Cooking, Fitness, Biology, Social media (health content)","education":"BSc Nutrition & Dietetics / MSc, Hospital or clinic internship, Certification"},{"id":60,"category":"🩺 Healthcare & Medicine","title":"Psychologist","hard_skills":"Psychological assessment, Counseling techniques, CBT, Diagnosis (DSM), Research methods, Report writing","soft_skills":"Empathy, Active Listening, Communication, Patience, Emotional Intelligence","strengths":"Non-Judgmental Nature, Deep Empathy, Analytical Mind, Emotional Stability","interests":"Human behavior, Philosophy, Listening to people, Social sciences, Reading","education":"BA/BSc Psychology + MA/MSc Psychology, Supervised clinical practice, RCI registration"},{"id":61,"category":"🩺 Healthcare & Medicine","title":"Psychiatrist","hard_skills":"Mental health diagnosis (ICD/DSM), Psychopharmacology, Psychotherapy, Patient assessment, Crisis management","soft_skills":"Empathy, Communication, Decision Making, Patience, Emotional Regulation","strengths":"Compassion, Emotional Stability, Non-Judgmental Nature, Analytical Mind","interests":"Human mind, Mental health awareness, Reading, Social service, Biology","education":"MBBS + MD Psychiatry (NEET PG), Clinical training, MCI registration"},{"id":62,"category":"🩺 Healthcare & Medicine","title":"Medical Lab Technician","hard_skills":"Lab equipment operation, Sample collection, Blood tests, Culture & sensitivity, Quality control, Report preparation","soft_skills":"Attention to Detail, Accuracy, Teamwork, Communication","strengths":"Precision, Scientific Mindset, Methodical Nature","interests":"Biology, Chemistry, Lab work, Science experiments","education":"BMLT / DMLT diploma, Lab internship, Registration with competent authority"},{"id":63,"category":"🩺 Healthcare & Medicine","title":"Radiologist","hard_skills":"X-ray/CT/MRI interpretation, Ultrasound, Radiation safety, Anatomy mastery, Report writing, PACS systems","soft_skills":"Analytical Thinking, Attention to Detail, Communication, Precision","strengths":"Sharp Visual Perception, Analytical Mind, Precision, Patience","interests":"Biology, Physics, Medical imaging, Analytical puzzles","education":"MBBS + MD Radiology (NEET PG), Residency training, MCI registration"},{"id":64,"category":"🩺 Healthcare & Medicine","title":"Occupational Therapist","hard_skills":"Functional assessment, Adaptive equipment, Activity planning, Sensory integration, Rehabilitation techniques","soft_skills":"Empathy, Creativity, Communication, Patience","strengths":"Compassion, Creativity, Problem Solving, Motivating Others","interests":"Helping disabled people, Art/craft, Human development, Social service","education":"BOT (Bachelor of Occupational Therapy), 4.5 years + internship, AIOT registration"},{"id":65,"category":"🎨 Creative & Design","title":"Graphic Designer","hard_skills":"Adobe Photoshop, Illustrator, InDesign, Typography, Color Theory, Layout Design, Branding principles","soft_skills":"Creativity, Attention to Detail, Client Communication, Time Management","strengths":"Visual Creativity, Aesthetic Sense, Patience, Versatility","interests":"Drawing, Art, Typography, Visiting design blogs, Photography, Visual media","education":"BFA/BDes or online certification, Portfolio (Behance/Dribbble), Freelance work, Studio internship"},{"id":66,"category":"🎨 Creative & Design","title":"UI/UX Designer","hard_skills":"Figma/Adobe XD, User Research, Wireframing, Prototyping, Usability Testing, Design Thinking, HTML/CSS basics","soft_skills":"Empathy, Communication, Problem Solving, Creativity, Collaboration","strengths":"User Empathy, Creative Thinking, Analytical Mind, Attention to Detail","interests":"Analyzing apps/websites, Psychology, Art, Tech, Problem solving","education":"BDes/B.Tech, UX certification (Google/Interaction Design Foundation), Portfolio, Internship"},{"id":67,"category":"🎨 Creative & Design","title":"Animator","hard_skills":"Adobe Animate, After Effects, 3D software (Maya/Blender), Storyboarding, Timing & Motion, Character Design","soft_skills":"Creativity, Patience, Attention to Detail, Storytelling","strengths":"Visual Creativity, Storytelling Ability, Patience, Technical Aptitude","interests":"Drawing, Movies/cartoons, Storytelling, Gaming, Art","education":"BFA/Diploma in Animation, Portfolio (showreel), Studio internship, Personal animation projects"},{"id":68,"category":"🎨 Creative & Design","title":"Illustrator","hard_skills":"Drawing skills, Procreate/Adobe Illustrator, Color Theory, Character Design, Visual Storytelling, Digital painting","soft_skills":"Creativity, Attention to Detail, Communication, Time Management","strengths":"Artistic Talent, Visual Imagination, Patience, Versatility","interests":"Drawing, Books, Comics, Storytelling, Nature, Fantasy","education":"BFA or self-taught, Portfolio (Instagram/Behance), Freelance illustration work"},{"id":69,"category":"🎨 Creative & Design","title":"Fashion Designer","hard_skills":"Textile knowledge, Pattern Making, Sketching, Sewing, Trend Research, Adobe Illustrator, Fashion history","soft_skills":"Creativity, Attention to Detail, Business Sense, Communication","strengths":"Aesthetic Sense, Trend Awareness, Creativity, Business Mindset","interests":"Fashion, Clothes, Art, Trends, Shopping, Cultural aesthetics","education":"BDes (Fashion) from NIFT/NID, Internship with fashion brand, Portfolio, Fashion week participation"},{"id":70,"category":"🎨 Creative & Design","title":"Interior Designer","hard_skills":"AutoCAD/SketchUp/3ds Max, Space Planning, Color Theory, Material knowledge, Lighting design, Client presentation","soft_skills":"Creativity, Communication, Project Management, Attention to Detail","strengths":"Visual Creativity, Aesthetic Sense, Spatial Intelligence, Client Management","interests":"Home decor, Architecture, Art, Shopping for furniture, Real estate shows","education":"BDes (Interior) or B.Arch, Software training, Portfolio, Internship with design firm"},{"id":71,"category":"🎨 Creative & Design","title":"Product Designer","hard_skills":"CAD (SolidWorks), Design Thinking, Prototyping, Material Science, User Research, Manufacturing basics","soft_skills":"Creativity, Problem Solving, User Empathy, Teamwork","strengths":"Innovation, Functional Creativity, User Focus, Technical Aptitude","interests":"Product usage analysis, Innovation, Engineering, Art, Shopping behaviors","education":"BDes/B.Tech, Portfolio of product concepts, Internship with design studio or company"},{"id":72,"category":"🎨 Creative & Design","title":"Video Editor","hard_skills":"Adobe Premiere Pro, After Effects, DaVinci Resolve, Color Grading, Audio editing, Storytelling, Motion Graphics","soft_skills":"Creativity, Attention to Detail, Communication, Time Management","strengths":"Visual Storytelling, Patience, Aesthetic Eye, Technical Aptitude","interests":"Movies, YouTube, Gaming content, Storytelling, Music","education":"Online courses + practice, Portfolio (YouTube/Vimeo), Freelance editing, Studio internship"},{"id":73,"category":"🎨 Creative & Design","title":"Photographer","hard_skills":"Camera operation (DSLR/mirrorless), Composition, Lighting, Photo editing (Lightroom/Photoshop), Various photography types","soft_skills":"Creativity, Attention to Detail, Communication, Patience","strengths":"Visual Creativity, Patience, Keen Observation, Aesthetic Sense","interests":"Photography, Travel, Nature, Art, People/portrait interest","education":"Photography courses, Personal portfolio, Assisting established photographers, Freelance work"},{"id":74,"category":"🎤 Media & Entertainment","title":"Content Creator","hard_skills":"Video/photo creation, Script writing, Social media algorithms, Basic video editing, SEO basics, Analytics understanding","soft_skills":"Creativity, Communication, Consistency, Adaptability","strengths":"Authenticity, Creativity, Persistence, Self-Motivation","interests":"Social media, Storytelling, Particular niche (tech/comedy/education etc.), Performing","education":"Self-built audience, Consistent posting practice, Platform-specific knowledge"},{"id":75,"category":"🎤 Media & Entertainment","title":"YouTuber","hard_skills":"Video production, Scripting, Video editing (Premiere/DaVinci), Thumbnail design, YouTube SEO, Analytics","soft_skills":"Creativity, Consistency, Communication, Audience Understanding","strengths":"Storytelling Ability, Persistence, Authenticity, Niche Expertise","interests":"Video creation, Watching YouTube critically, Storytelling, Teaching/entertaining","education":"Channel building, Consistent content, YouTube Creator Academy training"},{"id":76,"category":"🎤 Media & Entertainment","title":"Journalist","hard_skills":"News Writing (5 W's & H), Reporting, Interview techniques, Research, Fact-checking, AP/Telugu style guide","soft_skills":"Communication, Curiosity, Integrity, Critical Thinking, Persistence","strengths":"Curiosity, Ethical Mindset, Strong Language Skills, Courage","interests":"Current affairs, Reading newspapers, Writing, Social issues, Investigating","education":"BA/MA Journalism & Mass Communication, Internship at newspaper/channel, Beat reporting experience"},{"id":77,"category":"🎤 Media & Entertainment","title":"News Anchor","hard_skills":"News reading, Teleprompter use, Live reporting, Interview skills, Pronunciation, On-camera presence","soft_skills":"Communication, Confidence, Composure, Quick Thinking","strengths":"Clear Diction, Composure, Attractive Personality, Quick Thinking","interests":"Current affairs, Drama/theatre, Public speaking, Debate, TV news watching","education":"BA Journalism/Mass Comm, News anchoring training, Internship at news channel"},{"id":78,"category":"🎤 Media & Entertainment","title":"Radio Jockey","hard_skills":"Voice modulation, Script writing, Music knowledge, Interview techniques, Audio equipment, Live broadcasting","soft_skills":"Communication, Creativity, Quick Thinking, Adaptability","strengths":"Engaging Voice, Humor, Quick Wit, Warmth","interests":"Music, Talking, Entertainment, Current affairs, Comedy","education":"Mass Communication degree or diploma, RJ training programs, Demo tape creation, Radio station internship"},{"id":79,"category":"🎤 Media & Entertainment","title":"Actor","hard_skills":"Acting techniques (Stanislavski/Method), Dialogue delivery, Body language, Character analysis, Script reading","soft_skills":"Emotional Intelligence, Communication, Discipline, Teamwork","strengths":"Emotional Range, Physical Expression, Memorization, Courage","interests":"Drama, Storytelling, Movies, Mimicry, Stage performance, Reading scripts","education":"Drama school/theatre, Workshops with directors, Auditions, Short film appearances"},{"id":80,"category":"🎤 Media & Entertainment","title":"Singer","hard_skills":"Vocal technique, Music theory, Raga knowledge (classical), Recording studio skills, Stage performance, Breath control","soft_skills":"Discipline, Communication, Emotional Expression, Persistence","strengths":"Musical Talent, Emotional Expression, Dedication, Stage Presence","interests":"Music, Singing practice, Music events, Various genres listening, Instruments","education":"Vocal training under Guru, Music college (if formal), Performances, Competitions like Sa Re Ga Ma"},{"id":81,"category":"🎤 Media & Entertainment","title":"Dancer","hard_skills":"Dance forms (classical/folk/western), Body conditioning, Choreography, Rhythm & music understanding, Stage presence","soft_skills":"Discipline, Teamwork, Emotional Expression, Physical Fitness","strengths":"Physical Grace, Rhythm Sense, Dedication, Expressiveness","interests":"Dance, Music, Fitness, Performing, Watching dance shows","education":"Dance academy training, Performances, Competitions (e.g., Dance India Dance), Choreography projects"},{"id":82,"category":"🎤 Media & Entertainment","title":"Script Writer","hard_skills":"Story structure, Dialogue writing, Character development, Genre conventions, Screenplay format, Research","soft_skills":"Creativity, Observation, Communication, Research Skills","strengths":"Storytelling Imagination, Empathy, Observation, Persistence","interests":"Movies, Reading, Storytelling, Observing people, Drama, Human psychology","education":"Mass Comm / Literature degree, Script workshops, Short film scripts, Writing portfolio"},{"id":83,"category":"🎤 Media & Entertainment","title":"Film Director","hard_skills":"Cinematography basics, Screenplay analysis, Production management, Actor direction, Editing understanding, Visual storytelling","soft_skills":"Leadership, Creative Vision, Communication, Decision Making","strengths":"Creative Vision, Leadership, Storytelling, Collaboration","interests":"Movies (critically watching), Photography, Literature, Theatre, Visual arts","education":"Film school (FTII/Satyajit Ray) or self-learning, Short film direction, Assistant director experience"},{"id":84,"category":"🎤 Media & Entertainment","title":"Cinematographer","hard_skills":"Camera operation, Lighting design, Lens knowledge, Color grading, Shot composition, DIT skills","soft_skills":"Creativity, Technical Aptitude, Teamwork, Attention to Detail","strengths":"Visual Creativity, Technical Precision, Aesthetic Sense","interests":"Photography, Movies (visually), Art, Light & shadow, Tech gadgets","education":"Film school or photography background, Camera assistant experience, Short film work, Portfolio"},{"id":85,"category":"📚 Education & Research","title":"Teacher","hard_skills":"Subject expertise, Lesson planning, Classroom management, Assessment design, Basic computer skills, Communication","soft_skills":"Patience, Communication, Empathy, Creativity, Adaptability","strengths":"Love for Teaching, Patience, Inspiring Ability, Dedication","interests":"Helping others learn, Subject passion, Reading, Storytelling, Children","education":"B.Ed degree, Subject bachelor's degree, TET/CTET qualification, Teaching practice"},{"id":86,"category":"📚 Education & Research","title":"Professor","hard_skills":"Deep subject expertise, Research methodology, Academic writing, Lecture skills, Curriculum design, Mentoring","soft_skills":"Communication, Research Aptitude, Patience, Leadership","strengths":"Intellectual Curiosity, Deep Knowledge, Inspiring Others, Research Drive","interests":"Deep subject interest, Research, Academic writing, Teaching, Debate","education":"PhD in subject, NET/SET qualification, Research publications, University appointment"},{"id":87,"category":"📚 Education & Research","title":"Research Scientist","hard_skills":"Research methodology, Data analysis, Scientific writing, Lab techniques, Statistical tools, Grant writing","soft_skills":"Analytical Thinking, Curiosity, Patience, Communication, Integrity","strengths":"Intellectual Curiosity, Perseverance, Critical Mind, Attention to Detail","interests":"Deep subject interest, Experiments, Reading research papers, Problem solving","education":"MSc/M.Tech + PhD, Research publications, Fellowship/grant experience, Lab work"},{"id":88,"category":"📚 Education & Research","title":"Career Counselor","hard_skills":"Career assessment tools, Counseling techniques, Education system knowledge, Job market trends, Communication","soft_skills":"Empathy, Communication, Active Listening, Guidance Ability","strengths":"Empathy, Broad Knowledge, Motivating Others, Non-Judgmental Nature","interests":"Helping students, Psychology, Career development, Human potential","education":"Counseling degree/certification, Psychology background, Counseling practice hours"},{"id":89,"category":"💼 Business & Management","title":"Entrepreneur","hard_skills":"Business planning, Financial literacy, Marketing, Sales, Leadership, Product development, Networking","soft_skills":"Risk Taking, Leadership, Communication, Resilience, Vision","strengths":"Innovation, Risk Tolerance, Leadership, Persistence, Vision","interests":"Business ideas, Market observation, Problem solving, Innovation, Economics","education":"Any degree (not mandatory), Startup internship/experience, Business competitions, Mentorship"},{"id":90,"category":"💼 Business & Management","title":"Business Analyst","hard_skills":"Requirements gathering, Process mapping, Data analysis, SQL, Excel, Stakeholder management, Documentation","soft_skills":"Analytical Thinking, Communication, Problem Solving, Attention to Detail","strengths":"Analytical Mind, Communication Bridge Building, Process Thinking","interests":"Business processes, Data analysis, Problem solving, Systems thinking","education":"BBA/B.Tech + MBA, BA certification (CBAP), Internship, Business analysis projects"},{"id":91,"category":"💼 Business & Management","title":"HR Manager","hard_skills":"Recruitment, Labor Law, Performance management, HRIS systems, Training & development, Compensation design","soft_skills":"Empathy, Communication, Leadership, Conflict Resolution, Integrity","strengths":"People Orientation, Empathy, Fair Judgment, Confidentiality","interests":"Human behavior, Psychology, Helping people, Organizational culture","education":"MBA HR / BBA, SHRM certification, HR internship, Labor law knowledge"},{"id":92,"category":"💼 Business & Management","title":"Marketing Specialist","hard_skills":"Market research, Digital marketing, Content strategy, SEO/SEM, Social media, Analytics (Google Analytics), Branding","soft_skills":"Creativity, Communication, Analytical Thinking, Adaptability","strengths":"Creative Thinking, Trend Awareness, Persuasion, Data-Driven Mindset","interests":"Social media, Consumer behavior, Trends, Writing, Business","education":"MBA Marketing / BBA, Digital marketing certifications, Campaign portfolio, Internship"},{"id":93,"category":"💼 Business & Management","title":"Project Manager","hard_skills":"Project planning, Risk management, MS Project/Jira, Agile/Scrum, Budgeting, Stakeholder management","soft_skills":"Leadership, Communication, Problem Solving, Organization, Adaptability","strengths":"Organizational Ability, Leadership, Accountability, Systems Thinking","interests":"Planning, Organization, Team activities, Problem solving, Leadership","education":"MBA / B.Tech, PMP certification, Agile/Scrum certification, Project experience"},{"id":94,"category":"💼 Business & Management","title":"Product Manager","hard_skills":"Product roadmapping, User research, Data analysis, Agile, Wireframing basics, Prioritization frameworks","soft_skills":"Communication, Leadership, Analytical Thinking, Empathy, Decision Making","strengths":"Vision, Empathy for Users, Cross-functional Thinking, Business Sense","interests":"Product usage analysis, User behavior, Business + tech intersection","education":"MBA + tech experience or B.Tech, PM courses, Product strategy practice"},{"id":95,"category":"💰 Finance & Commerce","title":"Chartered Accountant","hard_skills":"Financial Accounting, Taxation (Income Tax/GST), Auditing, Cost Accounting, Financial Reporting, Tally/SAP","soft_skills":"Analytical Thinking, Attention to Detail, Integrity, Communication","strengths":"Numerical Aptitude, Precision, Honesty, Methodical Nature","interests":"Accounts, Finance, Tax, Numbers, Business news, Economics","education":"CA Foundation → Intermediate → Final (ICAI), 3-year articleship, Passing all 3 levels"},{"id":96,"category":"💰 Finance & Commerce","title":"Investment Banker","hard_skills":"Financial modeling, Valuation techniques, M&A knowledge, Excel, Capital markets, Pitch deck creation","soft_skills":"Analytical Thinking, Communication, Networking, High Pressure Work","strengths":"Numerical Intelligence, Competitive Drive, Resilience, Networking","interests":"Finance, Stock markets, Business deals, Economics, Competition","education":"MBA Finance (IIM/top college), CFA certification, Investment banking internship"},{"id":97,"category":"💰 Finance & Commerce","title":"Financial Analyst","hard_skills":"Financial modeling, Ratio analysis, Excel, Bloomberg terminal, Report writing, Valuation, Forecasting","soft_skills":"Analytical Thinking, Communication, Attention to Detail, Research","strengths":"Numerical Aptitude, Analytical Mind, Research Drive","interests":"Finance, Economy, Stock markets, Business news, Numbers","education":"BBA/B.Com + MBA Finance, CFA certification, Financial analyst internship"},{"id":98,"category":"💰 Finance & Commerce","title":"Stock Broker","hard_skills":"Stock market knowledge, Technical analysis, Fundamental analysis, SEBI regulations, Trading platforms, Risk management","soft_skills":"Analytical Thinking, Decision Making, Communication, Emotional Control","strengths":"Risk Tolerance, Numerical Aptitude, Cool Under Pressure, Research","interests":"Stock markets, Finance news, Economics, Trading, Business","education":"NISM certification (mandatory), SEBI registration, Finance degree, Broking firm experience"},{"id":99,"category":"⚖️ Law & Administration","title":"Lawyer","hard_skills":"Legal knowledge (IPC/CrPC/CPC/Constitution), Legal drafting, Case research, Courtroom advocacy, Contract law","soft_skills":"Communication, Critical Thinking, Persuasion, Attention to Detail, Empathy","strengths":"Logical Mind, Confidence, Strong Ethics, Memory, Justice Sense","interests":"Debate, Current affairs, Reading, Social justice, Arguing logically, History","education":"LLB / BA LLB, Bar Council enrollment, AIBE, Senior advocate internship"},{"id":100,"category":"⚖️ Law & Administration","title":"Judge","hard_skills":"Deep legal knowledge, Judicial reasoning, Evidence evaluation, Judgment writing, Constitutional interpretation","soft_skills":"Impartiality, Analytical Thinking, Communication, Integrity, Patience","strengths":"Absolute Integrity, Impartiality, Wisdom, Patience, Strong Ethics","interests":"Law, Justice, Philosophy, Reading, Social issues, Debate","education":"LLB + 7 years practice → Judicial Services Exam / Elevated from senior advocate / UPSC"},{"id":101,"category":"⚖️ Law & Administration","title":"Legal Advisor","hard_skills":"Corporate law, Contract drafting, Compliance, Litigation support, Legal research, Risk assessment","soft_skills":"Communication, Analytical Thinking, Attention to Detail, Integrity","strengths":"Trustworthiness, Analytical Mind, Communication, Problem Solving","interests":"Business law, Contract analysis, Corporate world, Finance, Risk","education":"LLB, Bar Council, Corporate law experience, Company-specific legal training"},{"id":102,"category":"⚖️ Law & Administration","title":"Company Secretary","hard_skills":"Company Law (Companies Act), SEBI regulations, Board meeting management, Secretarial audit, Compliance, ROC filings","soft_skills":"Attention to Detail, Communication, Integrity, Organization","strengths":"Precision, Trustworthiness, Organized Nature, Legal Aptitude","interests":"Corporate governance, Law, Finance, Business compliance, Organized work","education":"CS Foundation → Executive → Professional (ICSI), Training, ACS qualification"},{"id":103,"category":"🌾 Agriculture & Environment","title":"Agricultural Officer","hard_skills":"Crop science, Soil science, Agricultural schemes, Extension services, Pest management, Irrigation techniques","soft_skills":"Communication, Problem Solving, Empathy, Field Work Ability","strengths":"Service Mindset, Practical Knowledge, Farmer Empathy, Field Orientation","interests":"Farming, Rural life, Nature, Plant science, Social service","education":"BSc Agriculture, State Agriculture department exam (APPSC/TSPSC), Field extension work"},{"id":104,"category":"🌾 Agriculture & Environment","title":"Environmental Scientist","hard_skills":"Environmental assessment, GIS, Data analysis, Environmental laws, Field sampling, Report writing","soft_skills":"Analytical Thinking, Communication, Problem Solving, Field Work","strengths":"Environmental Passion, Scientific Mind, Field Adaptability, Ethics","interests":"Nature, Ecology, Climate change, Field trips, Science","education":"BSc/MSc Environmental Science, Research internship, Field work experience"},{"id":105,"category":"🌾 Agriculture & Environment","title":"Forest Officer","hard_skills":"Forest laws, Wildlife management, Tree identification, GIS/remote sensing, Fire management","soft_skills":"Physical Fitness, Leadership, Communication, Environmental Ethics","strengths":"Nature Love, Physical Fitness, Conservation Ethics, Leadership","interests":"Nature, Wildlife, Trekking, Ecology, Conservation","education":"BSc Forestry, State Forest Service Exam (APPSC), Physical fitness, IFS exam for IFS cadre"},{"id":106,"category":"✈️ Travel & Hospitality","title":"Pilot","hard_skills":"Aviation principles, Aircraft systems, Navigation, Meteorology, Air traffic communication, Instrument flying","soft_skills":"Quick Decision Making, Focus, Teamwork, Communication, Composure","strengths":"Spatial Intelligence, Quick Reflexes, Composure, Responsibility","interests":"Aviation, Aircraft, Physics, Travel, Adventure, Speed","education":"Class 12 (PCM), CPL license (DGCA), Flying hours (200+ for CPL), Medical fitness"},{"id":107,"category":"✈️ Travel & Hospitality","title":"Hotel Manager","hard_skills":"Hospitality management, Front office operations, F&B management, Revenue management, Customer service, HR basics","soft_skills":"Leadership, Communication, Problem Solving, Customer Focus, Adaptability","strengths":"Hospitality Mindset, Leadership, Attention to Detail, Cultural Sensitivity","interests":"Travel, Food, Hospitality, Cultural exchange, People management","education":"BHM (IHM), Hotel internship, Front-line hospitality experience, Management training"},{"id":109,"category":"🏅 Sports & Fitness","title":"Athlete","hard_skills":"Sport-specific technical skills, Physical conditioning, Strength & stamina training, Game strategy, Recovery techniques","soft_skills":"Discipline, Teamwork (for team sports), Mental Toughness, Adaptability","strengths":"Physical Talent, Dedication, Mental Strength, Competitive Drive","interests":"Specific sport, Fitness, Competition, Winning, Physical activity","education":"Early training (district/state level), Coach mentorship, Competition exposure, SAI/sports academy"},{"id":110,"category":"🏅 Sports & Fitness","title":"Coach","hard_skills":"Sport-specific expertise, Training methodology, Sports psychology basics, Video analysis, Physical conditioning","soft_skills":"Leadership, Communication, Empathy, Patience, Motivating Others","strengths":"Sports Passion, Teaching Ability, Leadership, Patience, Motivator","interests":"Specific sport, Fitness, Mentoring, Youth development, Strategy","education":"Sports playing career + coaching certifications (NIS), SAI coaching diploma, Practical coaching experience"},{"id":111,"category":"🏅 Sports & Fitness","title":"Fitness Trainer","hard_skills":"Exercise science, Nutrition basics, Training program design, Anatomy, Weight training, First Aid","soft_skills":"Motivation, Communication, Empathy, Adaptability","strengths":"Fitness Passion, Motivating Others, Patience, Physical Fitness","interests":"Fitness, Gym, Nutrition, Health, Body transformation, Sports","education":"ACE/NASM certification, Gym assistant experience, Anatomy course, Client training portfolio"},{"id":112,"category":"🌐 Emerging Careers","title":"AI Prompt Engineer","hard_skills":"LLM knowledge, Prompt crafting techniques, Python basics, API usage, Testing & evaluation, Technical writing","soft_skills":"Creativity, Communication, Analytical Thinking, Attention to Detail","strengths":"Creative Language Use, Systematic Testing, Curiosity about AI","interests":"AI tools (ChatGPT/Claude), Language, Writing, Tech experiments, Problem solving","education":"AI certifications, Personal prompt portfolio, API project practice, Continuous AI tool exploration"},{"id":113,"category":"🌐 Emerging Careers","title":"Digital Marketing Specialist","hard_skills":"SEO, SEM (Google Ads), Social media marketing, Content marketing, Email marketing, Analytics (GA4), Meta Ads","soft_skills":"Creativity, Analytical Thinking, Communication, Adaptability","strengths":"Trend Awareness, Creative Data Use, Business Sense, Adaptability","interests":"Social media, Business, Writing, Trends, Consumer behavior, Tech","education":"Digital marketing certification (Google/HubSpot), Campaign portfolio, Agency internship"},{"id":114,"category":"🌐 Emerging Careers","title":"SEO Specialist","hard_skills":"On-page SEO, Off-page SEO, Technical SEO, Keyword research, Google Search Console, Analytics, Content strategy","soft_skills":"Analytical Thinking, Communication, Patience, Attention to Detail","strengths":"Patient Systematic Work, Analytical Mind, Content Understanding","interests":"Search engines, Websites, Writing, Analytics, Business growth","education":"SEO certifications, Website ranking projects, Agency experience, Content portfolio"},{"id":115,"category":"🌐 Emerging Careers","title":"Social Media Manager","hard_skills":"Content creation, Platform algorithms (Meta/LinkedIn/Twitter), Community management, Analytics, Campaign management, Design basics","soft_skills":"Creativity, Communication, Adaptability, Trend Awareness","strengths":"Creativity, Trend Sensitivity, Consistent Execution, Brand Voice","interests":"Social media, Trends, Content creation, Community, Marketing","education":"Social media portfolio, Digital marketing certification, Brand internship, Content management experience"},{"id":116,"category":"🌐 Emerging Careers","title":"AR/VR Developer","hard_skills":"Unity/Unreal, C#/C++, 3D modeling (Blender), Spatial computing, ARKit/ARCore, VR hardware knowledge","soft_skills":"Creativity, Problem Solving, Teamwork, Technical Aptitude","strengths":"Spatial Imagination, Innovation Drive, Technical Creativity","interests":"Gaming, VR headsets, 3D design, Sci-fi, Immersive experiences","education":"B.Tech/BCA, AR/VR development courses, Personal project portfolio, Game studio internship"},{"id":117,"category":"🌐 Emerging Careers","title":"Drone Operator","hard_skills":"Drone flying skills, Navigation, Camera operation, Flight planning software, DGCA regulations, Basic maintenance","soft_skills":"Attention to Detail, Technical Aptitude, Calm Under Pressure, Spatial Awareness","strengths":"Spatial Coordination, Precision, Calm Nature, Technical Aptitude","interests":"Flying, Photography, Technology, Aviation, Outdoor activities","education":"DGCA Remote Pilot License (mandatory), Drone flying practice, Photography/survey project experience"},{"id":118,"category":"🌐 Emerging Careers","title":"Sustainability Consultant","hard_skills":"Environmental regulations, Carbon footprint analysis, ESG reporting, Renewable energy basics, Life cycle assessment","soft_skills":"Analytical Thinking, Communication, Persuasion, Problem Solving","strengths":"Environmental Passion, Business Sense, Persuasive Nature, Systematic Thinking","interests":"Environment, Climate change, Business sustainability, Economics, Social impact","education":"Environmental Science/MBA, Sustainability certifications (LEED/GRI), NGO or corporate ESG experience"}];
+ 
+// ─── STATE ───
+const userProfile = {
+  name: '', age: '', gender: '', location: '', education: '', field: '', other: '',
+  hard_skills: [], soft_skills: [], strengths: [], weaknesses: [], interests: [], experience: []
+};
+ 
+let allResults = [];
+ 
+// ─── CHIP MANAGEMENT ───
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('selected');
+    const checkSvg = chip.querySelector('.chip-check');
+    if (!checkSvg) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class','chip-check');
+      svg.setAttribute('viewBox','0 0 14 14');
+      svg.setAttribute('fill','none');
+      svg.setAttribute('stroke','currentColor');
+      svg.setAttribute('stroke-width','2');
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d','M2 7l3.5 3.5L12 3');
+      svg.appendChild(path);
+      chip.insertBefore(svg, chip.firstChild);
+    }
+  });
+});
+ 
+function addCustomChip(inputId, gridId, category) {
+  const input = document.getElementById(inputId);
+  const val = input.value.trim();
+  if (!val) return;
+  const grid = document.getElementById(gridId);
+  const chip = document.createElement('div');
+  chip.className = 'chip selected';
+  chip.dataset.val = val;
+  chip.dataset.custom = 'true';
+  chip.innerHTML = `<svg class="chip-check" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l3.5 3.5L12 3"/></svg>${val}`;
+  chip.addEventListener('click', () => chip.classList.toggle('selected'));
+  grid.appendChild(chip);
+  input.value = '';
+}
+ 
+// ─── NAVIGATION ───
+let currentStep = 0;
+function goToStep(step) {
+  // hide all pages
+  document.getElementById('page-hero').classList.remove('active');
+  for (let i = 1; i <= 3; i++) {
+    const p = document.getElementById(`page-${i}`);
+    if (p) p.classList.remove('active');
+  }
+  document.getElementById('page-results').classList.remove('active');
+ 
+  // update nav steps
+  for (let i = 0; i <= 3; i++) {
+    const ns = document.getElementById(`nav-step-${i}`);
+    if (!ns) continue;
+    ns.classList.remove('active','completed');
+    if (i < step) ns.classList.add('completed');
+    else if (i === step) ns.classList.add('active');
+  }
+ 
+  if (step === 0) {
+    document.getElementById('page-hero').classList.add('active');
+  } else if (step >= 1 && step <= 3) {
+    document.getElementById(`page-${step}`).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  currentStep = step;
+}
+ 
+// ─── COLLECT SELECTIONS ───
+function getSelectedChips(gridId) {
+  const chips = document.querySelectorAll(`#${gridId} .chip.selected`);
+  return Array.from(chips).map(c => c.dataset.val);
+}
+ 
+function collectProfile() {
+  userProfile.name = document.getElementById('inp-name').value.trim() || 'Explorer';
+  userProfile.age = document.getElementById('inp-age').value;
+  userProfile.gender = document.getElementById('inp-gender').value;
+  userProfile.location = document.getElementById('inp-location').value;
+  userProfile.education = document.getElementById('inp-edu').value;
+  userProfile.field = document.getElementById('inp-field').value;
+  userProfile.other = document.getElementById('inp-other').value;
+ 
+  userProfile.hard_skills = [
+    ...getSelectedChips('chips-prog'),
+    ...getSelectedChips('chips-eng'),
+    ...getSelectedChips('chips-health'),
+    ...getSelectedChips('chips-biz'),
+    ...getSelectedChips('chips-creative')
+  ];
+  userProfile.soft_skills = getSelectedChips('chips-soft');
+  userProfile.strengths = getSelectedChips('chips-strength');
+  userProfile.weaknesses = getSelectedChips('chips-weakness');
+  userProfile.interests = [...getSelectedChips('chips-interest'), ...getSelectedChips('chips-hobby')];
+  userProfile.experience = getSelectedChips('chips-exp');
+}
+ 
+// ─── MATCHING ALGORITHM ───
+function tokenize(str) {
+  return str.toLowerCase().split(/[,/()&+\n]+/).map(s => s.trim()).filter(Boolean);
+}
+ 
+function scoreCareer(career) {
+  const userTokens = new Set([
+    ...userProfile.hard_skills.flatMap(s => tokenize(s)),
+    ...userProfile.soft_skills.flatMap(s => tokenize(s)),
+    ...userProfile.strengths.flatMap(s => tokenize(s)),
+    ...userProfile.interests.flatMap(s => tokenize(s)),
+    ...userProfile.experience.flatMap(s => tokenize(s)),
+    ...tokenize(userProfile.field),
+    ...tokenize(userProfile.other)
+  ]);
+ 
+  const careerTokens = [
+    ...tokenize(career.hard_skills),
+    ...tokenize(career.soft_skills),
+    ...tokenize(career.strengths),
+    ...tokenize(career.interests),
+    ...tokenize(career.education)
+  ];
+ 
+  let matches = 0;
+  const matchedWords = new Set();
+ 
+  for (const ct of careerTokens) {
+    if (ct.length < 3) continue;
+    // exact match
+    if (userTokens.has(ct)) { matches += 2; matchedWords.add(ct); continue; }
+    // partial match
+    for (const ut of userTokens) {
+      if (ut.length < 3) continue;
+      if (ct.includes(ut) || ut.includes(ct)) {
+        matches += 1;
+        matchedWords.add(ct);
+        break;
+      }
+    }
+  }
+ 
+  // boost if education / field mentioned
+  const userEduTokens = tokenize(userProfile.education + ' ' + userProfile.field);
+  const careerEduTokens = tokenize(career.education);
+  for (const et of careerEduTokens) {
+    if (et.length < 3 && userEduTokens.some(ut => et.includes(ut) || ut.includes(et))) {
+      matches += 3;
+    }
+  }
+ 
+  const totalPossible = careerTokens.filter(t => t.length >= 3).length * 2;
+  const rawScore = totalPossible > 0 ? (matches / totalPossible) * 100 : 0;
+ 
+  // normalize to 40–98 range
+  const normalized = Math.min(98, Math.max(40, 40 + (rawScore / 100) * 58));
+ 
+  return { score: Math.round(normalized), matchedWords };
+}
+ 
+function generateReason(career, userProfile, score) {
+  const reasons = [];
+ 
+  const hardOverlap = userProfile.hard_skills.filter(s =>
+    career.hard_skills.toLowerCase().includes(s.toLowerCase())
+  );
+  const softOverlap = userProfile.soft_skills.filter(s =>
+    career.soft_skills.toLowerCase().includes(s.toLowerCase())
+  );
+  const strengthOverlap = userProfile.strengths.filter(s =>
+    career.strengths.toLowerCase().includes(s.toLowerCase())
+  );
+  const interestOverlap = userProfile.interests.filter(s =>
+    career.interests.toLowerCase().includes(s.toLowerCase())
+  );
+ 
+  if (hardOverlap.length > 0) {
+    reasons.push(`Your technical skills in <strong>${hardOverlap.slice(0,3).join(', ')}</strong> align well with this role's requirements.`);
+  }
+  if (softOverlap.length > 0) {
+    reasons.push(`Your soft skills — <strong>${softOverlap.slice(0,2).join(', ')}</strong> — are core to succeeding as a ${career.title}.`);
+  }
+  if (strengthOverlap.length > 0) {
+    reasons.push(`Your strength in <strong>${strengthOverlap.slice(0,2).join(' and ')}</strong> is exactly what this career demands.`);
+  }
+  if (interestOverlap.length > 0) {
+    reasons.push(`Your interest in <strong>${interestOverlap.slice(0,2).join(' and ')}</strong> naturally aligns with day-to-day work in this field.`);
+  }
+  if (reasons.length === 0) {
+    reasons.push(`Based on your overall profile, ${career.title} presents a strong career opportunity with room for growth given your background.`);
+  }
+  return reasons[0];
+}
+ 
+function getDescription(career) {
+  const descs = {
+    '💻 Technology & IT': `A dynamic role in the technology sector where you build, maintain, and innovate digital solutions that power the modern world.`,
+    '🏗️ Core Engineering': `A hands-on engineering career involving the design, analysis, and construction of physical systems and infrastructure.`,
+    '🏛️ Government & Public Service': `A prestigious career in public administration where you serve the nation by implementing policies and delivering governance.`,
+    '🇮🇳 Defence & Nation Service': `An honourable career dedicated to protecting the nation's sovereignty and providing security to citizens.`,
+    '🩺 Healthcare & Medicine': `A fulfilling career in the health sector focused on diagnosing, treating, and improving the health outcomes of individuals and communities.`,
+    '🎨 Creative & Design': `A creative career that combines artistic vision with technical execution to produce visual and experiential work across media.`,
+    '🎤 Media & Entertainment': `A vibrant career in content creation, journalism, or performance that shapes public opinion and culture.`,
+    '📚 Education & Research': `An intellectually rewarding career focused on advancing knowledge and inspiring the next generation of thinkers.`,
+    '💼 Business & Management': `A strategic career leading organizations, teams, and projects to drive growth and efficiency in the corporate world.`,
+    '💰 Finance & Commerce': `A high-stakes career in financial analysis, investment, and commerce that fuels economic growth and wealth creation.`,
+    '⚖️ Law & Administration': `A respected career upholding the rule of law, ensuring justice, and advising on legal and regulatory compliance.`,
+    '🌾 Agriculture & Environment': `A meaningful career bridging science and sustainability to support food security and protect the natural environment.`,
+    '✈️ Travel & Hospitality': `An exciting career serving global travellers, managing travel operations, and delivering exceptional hospitality experiences.`,
+    '🏅 Sports & Fitness': `An active career channelling physical talent and passion for sport into competitive performance or coaching excellence.`,
+    '🌐 Emerging Careers': `A forward-looking career in cutting-edge digital domains that are shaping the future of work and society.`
+  };
+  return descs[career.category] || `A rewarding career in ${career.category.replace(/^\S+ /,'')}.`;
+}
+ 
+// ─── RENDER ───
+function renderResults(results) {
+  allResults = results;
+  const grid = document.getElementById('results-grid');
+  grid.innerHTML = '';
+ 
+  if (results.length === 0) {
+    grid.innerHTML = `<div class="no-results"><h3>No strong matches found</h3><p>Try selecting more skills and interests for better recommendations.</p></div>`;
+    return;
+  }
+ 
+  results.forEach((r, i) => {
+    const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
+    const color = r.score >= 80 ? '#1cb87e' : r.score >= 65 ? '#4a90d9' : '#e8a020';
+    const circumference = 2 * Math.PI * 28;
+    const dashOffset = circumference - (r.score / 100) * circumference;
+    const hardSkillPills = r.career.hard_skills.split(',').slice(0, 6).map(s =>
+      `<span class="skill-pill">${s.trim()}</span>`).join('');
+    const eduSteps = r.career.education.split(',').map(e =>
+      `<li>${e.trim()}</li>`).join('');
+ 
+    const card = document.createElement('div');
+    card.className = `career-card ${rankClass}`;
+    card.dataset.category = r.career.category;
+    card.dataset.id = r.career.id;
+    card.innerHTML = `
+      <div class="career-card-top">
+        <div class="career-card-left">
+          <div class="career-rank">${i < 3 ? ['🥇 Best Match','🥈 Strong Match','🥉 Good Match'][i] : `#${i+1} Recommended`}</div>
+          <div class="career-title">${r.career.title}</div>
+          <span class="career-category">${r.career.category}</span>
+        </div>
+        <div class="match-badge">
+          <div class="match-circle">
+            <svg width="70" height="70" viewBox="0 0 70 70">
+              <circle cx="35" cy="35" r="28" fill="none" stroke="#e8ecf4" stroke-width="5"/>
+              <circle cx="35" cy="35" r="28" fill="none" stroke="${color}" stroke-width="5"
+                stroke-dasharray="${circumference.toFixed(2)}" stroke-dashoffset="${dashOffset.toFixed(2)}"
+                stroke-linecap="round"/>
+            </svg>
+            <span class="match-pct" style="color:${color}">${r.score}%</span>
+            <span class="match-label">match</span>
+          </div>
+        </div>
+      </div>
+      <p class="career-desc">${getDescription(r.career)}</p>
+      <div class="career-reason">💡 ${r.reason}</div>
+      <button class="career-toggle" onclick="toggleDetails(${r.career.id}, this)">
+        View required skills & education path ▼
+      </button>
+      <div class="career-details" id="details-${r.career.id}">
+        <div class="career-detail-grid">
+          <div class="detail-block">
+            <h4>Required Skills</h4>
+            <div class="skills-list">${hardSkillPills}</div>
+          </div>
+          <div class="detail-block">
+            <h4>Educational Path</h4>
+            <ul class="edu-list">${eduSteps}</ul>
+          </div>
+          <div class="detail-block">
+            <h4>Soft Skills Needed</h4>
+            <div class="skills-list">${r.career.soft_skills.split(',').slice(0,5).map(s=>`<span class="skill-pill">${s.trim()}</span>`).join('')}</div>
+          </div>
+          <div class="detail-block">
+            <h4>Key Strengths Required</h4>
+            <div class="skills-list">${r.career.strengths.split(',').slice(0,5).map(s=>`<span class="skill-pill">${s.trim()}</span>`).join('')}</div>
+          </div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+ 
+function toggleDetails(id, btn) {
+  const det = document.getElementById(`details-${id}`);
+  det.classList.toggle('open');
+  btn.textContent = det.classList.contains('open')
+    ? 'Hide details ▲'
+    : 'View required skills & education path ▼';
+}
+ 
+function filterResults(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+ 
+  let filtered = allResults;
+  if (type === 'top5') filtered = allResults.slice(0, 5);
+  else if (type === 'tech') filtered = allResults.filter(r => r.career.category.includes('Technology'));
+  else if (type === 'gov') filtered = allResults.filter(r => r.career.category.includes('Government') || r.career.category.includes('Defence'));
+  else if (type === 'creative') filtered = allResults.filter(r => r.career.category.includes('Creative') || r.career.category.includes('Media'));
+  else if (type === 'health') filtered = allResults.filter(r => r.career.category.includes('Healthcare'));
+  else if (type === 'business') filtered = allResults.filter(r => r.career.category.includes('Business') || r.career.category.includes('Finance'));
+ 
+  renderResults(filtered);
+}
+ 
+// ─── MAIN ANALYSIS ───
+function analyzeAndShowResults() {
+  collectProfile();
+ 
+  // Show results page with loading state
+  document.getElementById('page-3').classList.remove('active');
+  document.getElementById('page-results').classList.add('active');
+  document.getElementById('analyzing-state').style.display = 'flex';
+  document.getElementById('results-content').style.display = 'none';
+  document.getElementById('nav-step-3').classList.add('active');
+  document.getElementById('nav-step-2').classList.remove('active');
+  document.getElementById('nav-step-2').classList.add('completed');
+  window.scrollTo(0, 0);
+ 
+  setTimeout(() => {
+    // Score all careers
+    const scored = CAREERS.map(career => {
+      const { score, matchedWords } = scoreCareer(career);
+      const reason = generateReason(career, userProfile, score);
+      return { career, score, reason };
+    });
+ 
+    // Sort by score descending
+    scored.sort((a, b) => b.score - a.score);
+    const topResults = scored.slice(0, 20); // Show top 20
+ 
+    // Set name
+    document.getElementById('res-name').textContent = userProfile.name;
+    document.getElementById('res-subtitle').textContent =
+      `We analyzed ${CAREERS.length} careers across 15 domains and found ${topResults.length} matches for you`;
+ 
+    // Profile tags
+    const tags = document.getElementById('res-tags');
+    tags.innerHTML = '';
+    const tagItems = [
+      ...(userProfile.education ? [userProfile.education] : []),
+      ...(userProfile.field ? [userProfile.field] : []),
+      ...userProfile.hard_skills.slice(0,3),
+      ...userProfile.interests.slice(0,2)
+    ].slice(0, 6);
+    tagItems.forEach(t => {
+      if (!t) return;
+      const span = document.createElement('span');
+      span.className = 'result-tag';
+      span.textContent = t;
+      tags.appendChild(span);
+    });
+ 
+    allResults = topResults;
+    renderResults(topResults);
+ 
+    document.getElementById('analyzing-state').style.display = 'none';
+    document.getElementById('results-content').style.display = 'block';
+    document.getElementById('nav-step-3').classList.add('completed');
+    window.scrollTo(0, 0);
+  }, 1800);
+}
+ 
+function restartAssessment() {
+  location.reload();
+}
+</script>
+</body>
+</html>
+ 
